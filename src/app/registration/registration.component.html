@@ -7,20 +7,23 @@
             <fieldset>
                 <legend>Please choose participation level and complete information below</legend>
                 <div style="padding-bottom:5px;">
-                    <input type="radio" name="participation" id="scarlet" value="scarlet" (click)="calculateTotalCost()"><span style="padding-left:5px;"><label for="scarlet"><strong>Scarlet Sponsor</strong> ($780) includes Hole Sponsorship, 4 golfers, lunch (4) and 12 raffle tickets</label></span>
+                    <input type="radio" name="participation" id="scarlet" value="scarlet" (click)="calculateTotalCost()"><span style="padding-left:5px;"><label for="scarlet"><strong>Scarlet Sponsor</strong> (${{GOLF.scarletPrice}}) includes Hole Sponsorship, 4 golfers, lunch (4) and 12 raffle tickets</label></span>
                 </div>
                 <div style="padding-bottom:5px;">
-                    <input type="radio" name="participation" id="gray" value="gray" (click)="calculateTotalCost()"><span style="padding-left:5px;"><label for="gray"><strong>Gray Sponsor</strong> ($475) includes Hole Sponsorship, 2 golfers, lunch (2) and 6 raffle tickets</label></span>
+                    <input type="radio" name="participation" id="gray" value="gray" (click)="calculateTotalCost()"><span style="padding-left:5px;"><label for="gray"><strong>Gray Sponsor</strong> (${{GOLF.grayPrice}}) includes Hole Sponsorship, 2 golfers, lunch (2) and 6 raffle tickets</label></span>
                 </div>
                 <div style="padding-bottom:5px;">
-                    <input type="radio" name="participation" id="single" value="single" (click)="calculateTotalCost()"><span style="padding-left:5px;"><label for="single"><strong>Single</strong> ($175) includes lunch and 3 raffle tickets</label></span>
+                    <input type="radio" name="participation" id="single" value="single" (click)="calculateTotalCost()"><span style="padding-left:5px;"><label for="single"><strong>Single</strong> (${{GOLF.singlePrice}}) includes lunch and 3 raffle tickets</label></span>
                 </div>
                 <div style="padding-bottom:5px;">
-                    <input type="radio" name="participation" id="holeSponsor" value="holeSponsor" (click)="calculateTotalCost()"><span style="padding-left:5px;"><label for="holeSponsor"><strong>Hole Sponsor </strong>($150) includes lunch (does not include golf)</label></span>
+                    <input type="radio" name="participation" id="holeSponsor" value="holeSponsor" (click)="calculateTotalCost()"><span style="padding-left:5px;"><label for="holeSponsor"><strong>Hole Sponsor</strong> (${{GOLF.holeSponsorPrice}}) includes lunch (does not include golf)</label></span>
+                </div>
+                <div style="padding-bottom:5px;">
+                    <input type="radio" name="participation" id="lunchOnly" value="lunchOnly" (click)="calculateTotalCost()"><span style="padding-left:5px;"><label for="lunchOnly"><strong>Lunch Only</strong> (${{GOLF.lunchPrice}}) does not include golf</label></span>
                 </div>
             </fieldset>
             <hr />
-            <div *ngIf="holeSponsor"><strong>Thank you for sponsoring a hole!</strong><br /><hr/></div>
+            <div *ngIf="holeSponsor"><strong style="font-size:20px">Thank you for sponsoring a hole!</strong><br /><hr/></div>
             <div *ngIf="totalGolfers > 0">
                 Please enter details for {{totalGolfers}} golfers:
                 <br />
@@ -382,10 +385,10 @@
                     </div>
                 </div>
             </div>
-            <br /> 
-            <div *ngIf="totalGolfers > 0"><hr />
+            <br />
+            <ng-container *ngIf="totalCost > 0">
                 <fieldset>
-                <legend>Each golfer is signed up for a lunch.  Would you like to sign others up for lunch ($40/each)?</legend>
+                <legend><ng-container *ngIf="skippingGolf; else golfing">You are</ng-container><ng-template #golfing>Each golfer is</ng-template> signed up for a lunch.  Would you like to sign others up for lunch ($40/each)?</legend>
                 <div style="padding-bottom:5px;">
                     <input type="radio" name="extraLunch" id="lunchYes" value="lunchYes" (click)="showExtraLunch()"><span style="padding-left:5px;"><label for="lunchYes">Yes</label></span>
                 </div>
@@ -394,9 +397,8 @@
                 </div>
                 </fieldset>
                 <hr />
-            </div>
-            <div *ngIf="extraLunch || sponsorOnly">
-                <div *ngIf="sponsorOnly">You are signed up for 1 lunch.  You can also add others ($40/each)<br /><br /></div>
+            </ng-container>
+            <div *ngIf="extraLunch">
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         (1) <label for="lunch1">Name:</label>
@@ -431,7 +433,7 @@
                 </fieldset>
                 <hr />
             </div>
-            <div *ngIf="extraRaffle || sponsorOnly">
+            <div *ngIf="extraRaffle || skippingGolf">
                 <strong>Raffle Tickets</strong><br /><br />
                 <div class="row">
                     <div class="form-group col-md-3">
@@ -447,17 +449,21 @@
                 Total Raffle Tickets: {{totalRaffleTickets}}
                 <hr />
             </div>
-            <div class="form-group col-md-3">
-                <label for="donation">Other Donation:</label>
-                <input type ="text" id="donation" class="form-control" (blur)="calculateTotalCost()">
+            <div style="font-size:20px;"><strong>Total Cost:</strong><span id="totalCost" style="padding-left:5px">${{totalCost}}</span></div>
+            <hr />
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label for="donation">Would you like to add a donation?</label>
+                    <input type ="text" id="donation" class="form-control" (blur)="calculateTotalCost()">
+                </div>
             </div>
             <hr />
             <div><label for="comments">Any Additional Comments?</label><br /><textarea rows="5" cols="90" id="comments"></textarea></div>
-            <hr />
         </form>
         <br />
-        <div style="font-size:20px;"><strong>Total Cost:</strong><span id="totalCost" style="padding-left:5px">${{totalCost}}</span></div>
     </div>
     <hr />
+    <br />
+    <br />
 </div>
 
