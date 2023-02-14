@@ -388,7 +388,7 @@
             <br />
             <ng-container *ngIf="totalCost > 0">
                 <fieldset>
-                <legend><ng-container *ngIf="skippingGolf; else golfing">You are</ng-container><ng-template #golfing>Each golfer is</ng-template> signed up for a lunch.  Would you like to sign others up for lunch ($40/each)?</legend>
+                <legend><ng-container *ngIf="skippingGolf; else golfing">You are</ng-container><ng-template #golfing>Each golfer is</ng-template> signed up for a lunch.  Would you like to sign others up for lunch (${{GOLF.lunchPrice}}/each)?</legend>
                 <div style="padding-bottom:5px;">
                     <input type="radio" name="extraLunch" id="lunchYes" value="lunchYes" (click)="showExtraLunch()"><span style="padding-left:5px;"><label for="lunchYes">Yes</label></span>
                 </div>
@@ -421,9 +421,9 @@
                 </div>
                 <hr />
             </div>
-            <div *ngIf="totalRaffleTickets > 0">
+            <div *ngIf="raffleIncluded">
                 <fieldset>
-                    <legend>You have {{totalRaffleTickets}} raffle tickets.  Would you to purchase more ($10 for 3, #20 for 8)?</legend>
+                    <legend>You have {{totalRaffleTickets}} raffle tickets.  Would you to purchase more ($20 per 8 tickets)?</legend>
                     <div style="padding-bottom:5px;">
                         <input type="radio" name="extraRaffle" id="raffleYes" value="raffleYes" (click)="showExtraRaffle()"><span style="padding-left:5px;"><label for="raffleYes">Yes</label></span>
                     </div>
@@ -436,13 +436,21 @@
             <div *ngIf="extraRaffle || skippingGolf">
                 <strong>Raffle Tickets</strong><br /><br />
                 <div class="row">
-                    <div class="form-group col-md-3">
-                        <label for="raffle1"># at $10 for 3:</label>
-                        <input type ="text" id="raffle1" class="form-control" (blur)="calculateTotalCost()">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="raffle2"># at $20 for 8:</label>
-                        <input type ="text" id="raffle2" class="form-control" (blur)="calculateTotalCost()">
+                    <div class="form-group col-md-2">
+                        <label for="raffle">$20 per 8 tickets:</label>
+                        <select class="form-control" id="raffle" (change)="calculateTotalCost()">
+                            <option value="0">Select</option>
+                            <option value="8">8 tickets</option>
+                            <option value="16">16 tickets</option>
+                            <option value="24">24 tickets</option>
+                            <option value="32">32 tickets</option>
+                            <option value="40">40 tickets</option>
+                            <option value="48">48 tickets</option>
+                            <option value="56">56 tickets</option>
+                            <option value="64">64 tickets</option>
+                            <option value="72">72 tickets</option>
+                            <option value="80">80 tickets</option>
+                        </select>
                     </div>
                 </div>
                 <br />

@@ -1,7 +1,7 @@
 export const constants = {
-    scarletPrice: 780,
-    grayPrice: 475,
-    singlePrice: 175,
-    holeSponsorPrice: 150,
-    lunchPrice: 40
+    scarletPrice: 750,
+    grayPrice: 450,
+    singlePrice: 150,
+    holeSponsorPrice: 200,
+    lunchPrice: 35
 }
