@@ -149,6 +149,7 @@ export class RegistrationComponent {
       totalGolfers: this.totalGolfers,
       totalLunches: this.totalLunches,
       donation: this.donation,
+      holeSponsor: this.holeSponsor,
       comments,
       primaryName: this.getHTMLValue('name1'),
       primaryEmail: this.getHTMLValue('email1'),
