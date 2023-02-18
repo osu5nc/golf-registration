@@ -1,18 +1,20 @@
 <div class="container">
     <div class="form-check">Congratulations, you have registered for the golf tournament!</div><br />
     <div class="form-check"><strong>Confirmation Number:</strong> {{golfDataService.confirmationNumber}}</div><br />
-    <div class="form-check">To complete your registration, please choose from these payment options:</div>
+    <div class="form-check"><strong>Amount Due:</strong> ${{golfDataService.amountDue}}</div><br />
+    <div class="form-check">To complete your registration, choose from these payment options:</div>
     <br />
     <div class="form-check">
-        Venmo<br />
+        Zelle<br /><br />
+        <a href="https://enroll.zellepay.com/qr-codes?data=ewogICJuYW1lIiA6ICIiLAogICJ0b2tlbiIgOiAiMTk0MTMyMDk3OTUiCn0="><img src="../assets/zelle.jpg" style="width:300px;height:280px;"><img></a>
     </div>
-    <a href="https://venmo.com/code?user_id=2315571655868416997&created=1674521670"><img src="../assets/venmo.jpg" style="width:250px;height:200px;"><img></a>
+    
     <br /><hr />
-    <div class="form-check">
-        Zelle<br />
+    <!-- <div class="form-check">
+        Zelle<br /><br />
+        <a href="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiU0NPVFQiLCJ0b2tlbiI6Im9zdTVuY0BnbWFpbC5jb20iLCJhY3Rpb24iOiJwYXltZW50In0="><img src="../assets/zelle.jpg" style="width:300px;height:280px;"><img></a>
     </div>
-    <a href="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiU0NPVFQiLCJ0b2tlbiI6Im9zdTVuY0BnbWFpbC5jb20iLCJhY3Rpb24iOiJwYXltZW50In0="><img src="../assets/zelle.jpg" style="width:250px;height:300px;"><img></a>
-    <br /><hr />
+    <br /><hr /> -->
     <div class="form-check">
     Send a Check
     <br />

@@ -166,6 +166,7 @@ export class RegistrationComponent {
     };
     this.registrationService.register(body).subscribe((response) => {
       this.golfDataService.confirmationNumber = response._id;
+      this.golfDataService.amountDue = response.totalCost;
       this.router.navigateByUrl('payment');
     });
   }

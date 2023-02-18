@@ -8,4 +8,6 @@ export class GolfDataService {
   constructor() { }
 
   confirmationNumber: string = '';
+
+  amountDue: number = 0;
 }
