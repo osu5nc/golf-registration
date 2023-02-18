@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { constants } from '../constants/constants';
+import { GolfDataService } from '../golf-data.service';
 import { RegistrationService } from '../registration.service';
 
 @Component({
@@ -9,7 +11,10 @@ import { RegistrationService } from '../registration.service';
 })
 export class RegistrationComponent {
 
-  constructor(private registrationService: RegistrationService) {}
+  constructor(private registrationService: RegistrationService,
+              private golfDataService: GolfDataService,
+              private router: Router
+              ) {}
 
   totalCost: number = 0;
   totalLunches: number = 0;
@@ -160,7 +165,8 @@ export class RegistrationComponent {
       primaryPhone: this.getHTMLValue('phone1')
     };
     this.registrationService.register(body).subscribe((response) => {
-      alert('Confirmation Number:' + response._id);
+      this.golfDataService.confirmationNumber = response._id;
+      this.router.navigateByUrl('payment');
     });
   }
 }
