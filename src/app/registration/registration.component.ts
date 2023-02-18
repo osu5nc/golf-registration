@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { constants } from '../constants/constants';
+import { RegistrationService } from '../registration.service';
 
 @Component({
   selector: 'app-registration',
@@ -8,7 +9,7 @@ import { constants } from '../constants/constants';
 })
 export class RegistrationComponent {
 
-  constructor() {}
+  constructor(private registrationService: RegistrationService) {}
 
   totalCost: number = 0;
   totalLunches: number = 0;
@@ -117,9 +118,31 @@ export class RegistrationComponent {
     this.extraRaffle = false;
   }
 
-  private clearField(id: string) {
+  private clearField(id: string): void {
     if ((<HTMLInputElement>document.getElementById(id))) {
       (<HTMLInputElement>document.getElementById('lunch1')).value = '';
     }
+  }
+
+  public submitRegistration(): void {
+    const body = {
+      "participation" : "Single",
+      "totalCost": 700,
+      "totalGolfers": 1,
+      "totalLunches": 2,
+      "donation": 25,
+      "comments": "Thanks for running the tournament!",
+      "primaryName": "Joe",
+      "primaryEmail": "osu5nc@gmail.com",
+      "primaryMailingAddress": "123 Fake Street",
+      "primaryCity": "Bradenton",
+      "primaryState": "FL",
+      "primaryZip" : "12345",
+      "primaryPhone": "555-555-5555",
+      "lunch2Name": "Hope Ramer"
+    };
+    this.registrationService.register(body).subscribe(() => {
+      alert('Registration Complete!');
+    });
   }
 }
