@@ -93,13 +93,13 @@ export class RegistrationComponent {
       }
     }
     if(this.elementHasValue('raffle')) {
-      const raffleTickets = +(<HTMLInputElement>document.getElementById('raffle')).value;
+      const raffleTickets = +this.getHTMLValue('raffle');
       const raffleCost = raffleTickets * 20 / 8;
       this.totalCost += raffleCost;
       this.totalRaffleTickets += raffleTickets;
     }
     if(this.elementHasValue('donation')) {
-      this.donation = +(<HTMLInputElement>document.getElementById('donation')).value;
+      this.donation = +this.getHTMLValue('donation');
       this.totalCost += this.donation;
     }
   }
@@ -134,10 +134,14 @@ export class RegistrationComponent {
     return !!((<HTMLInputElement>document.getElementById(id)) && (<HTMLInputElement>document.getElementById(id)).value);
   }
 
+  private getHTMLValue(id: string): string {
+    return (<HTMLInputElement>document.getElementById(id)).value;
+  }
+
   public submitRegistration(): void {
     let comments = '';
     if(this.elementHasValue('comments')){
-      comments = (<HTMLInputElement>document.getElementById('comments')).value;
+      comments = this.getHTMLValue('comments');
     }
     const body = {
       participation: this.participation,
@@ -146,14 +150,13 @@ export class RegistrationComponent {
       totalLunches: this.totalLunches,
       donation: this.donation,
       comments,
-      primaryName: "Joe",
-      primaryEmail: "osu5nc@gmail.com",
-      primaryMailingAddress: "123 Fake Street",
-      primaryCity: "Bradenton",
-      primaryState: "FL",
-      primaryZip: "12345",
-      primaryPhone: "555-555-5555",
-      lunch2Name: "Hope Ramer"
+      primaryName: this.getHTMLValue('name1'),
+      primaryEmail: this.getHTMLValue('email1'),
+      primaryMailingAddress: this.getHTMLValue('address1'),
+      primaryCity: this.getHTMLValue('city1'),
+      primaryState: this.getHTMLValue('state1'),
+      primaryZip: this.getHTMLValue('zip1'),
+      primaryPhone: this.getHTMLValue('phone1')
     };
     this.registrationService.register(body).subscribe(() => {
       alert('Registration Complete!');
