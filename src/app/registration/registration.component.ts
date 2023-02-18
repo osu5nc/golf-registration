@@ -20,11 +20,13 @@ export class RegistrationComponent {
   extraRaffle: boolean = false;
   skippingGolf: boolean = false;
   raffleIncluded: boolean = false;
+  participation: string = '';
+  donation: number = 0;
   GOLF = constants;
 
   public calculateTotalCost(): void {
-    const participation = (<any>document.forms)['golfSignup'].elements['participation'].value;
-    if (participation == 'scarlet') {
+    this.participation = (<any>document.forms)['golfSignup'].elements['participation'].value;
+    if (this.participation == 'scarlet') {
       this.totalCost = this.GOLF.scarletPrice;
       this.totalLunches = 4;
       this.totalGolfers = 4;
@@ -32,7 +34,7 @@ export class RegistrationComponent {
       this.totalRaffleTickets = 12;
       this.skippingGolf = false;
       this.raffleIncluded = true;
-    } else if (participation == 'gray') {
+    } else if (this.participation == 'gray') {
       this.totalCost = this.GOLF.grayPrice;
       this.totalLunches = 2;
       this.totalGolfers = 2;
@@ -40,7 +42,7 @@ export class RegistrationComponent {
       this.totalRaffleTickets = 6;
       this.skippingGolf = false;
       this.raffleIncluded = true;
-    } else if (participation == 'single') {
+    } else if (this.participation == 'single') {
       this.totalCost = this.GOLF.singlePrice;
       this.totalLunches = 1;
       this.totalGolfers = 1;
@@ -48,7 +50,7 @@ export class RegistrationComponent {
       this.totalRaffleTickets = 3;
       this.skippingGolf = false;
       this.raffleIncluded = true;
-    } else if (participation == 'holeSponsor') {
+    } else if (this.participation == 'holeSponsor') {
       this.totalCost = this.GOLF.holeSponsorPrice;
       this.totalLunches = 1;
       this.totalGolfers = 0;
@@ -56,7 +58,7 @@ export class RegistrationComponent {
       this.totalRaffleTickets = 0;
       this.skippingGolf = true;
       this.raffleIncluded = false;
-    } else if (participation == 'lunchOnly') {
+    } else if (this.participation == 'lunchOnly') {
       this.totalCost = this.GOLF.lunchPrice;
       this.totalLunches = 1;
       this.totalGolfers = 0;
@@ -73,28 +75,32 @@ export class RegistrationComponent {
       this.totalRaffleTickets = 0;
     }
     if(this.extraLunch || this.holeSponsor) {
-      if((<HTMLInputElement>document.getElementById('lunch1')) && (<HTMLInputElement>document.getElementById('lunch1')).value) {
+      if(this.elementHasValue('lunch1')) {
         this.totalCost += this.GOLF.lunchPrice;
+        this.totalLunches ++;
       }
-      if((<HTMLInputElement>document.getElementById('lunch2')) && (<HTMLInputElement>document.getElementById('lunch2')).value) {
+      if(this.elementHasValue('lunch2')) {
         this.totalCost += this.GOLF.lunchPrice;
+        this.totalLunches ++;
       }
-      if((<HTMLInputElement>document.getElementById('lunch3')) && (<HTMLInputElement>document.getElementById('lunch3')).value) {
+      if(this.elementHasValue('lunch3')) {
         this.totalCost += this.GOLF.lunchPrice;
+        this.totalLunches ++;
       }
-      if((<HTMLInputElement>document.getElementById('lunch4')) && (<HTMLInputElement>document.getElementById('lunch4')).value) {
+      if(this.elementHasValue('lunch4')) {
         this.totalCost += this.GOLF.lunchPrice;
+        this.totalLunches ++;
       }
     }
-    if((<HTMLInputElement>document.getElementById('raffle')) && (<HTMLInputElement>document.getElementById('raffle')).value) {
+    if(this.elementHasValue('raffle')) {
       const raffleTickets = +(<HTMLInputElement>document.getElementById('raffle')).value;
       const raffleCost = raffleTickets * 20 / 8;
       this.totalCost += raffleCost;
       this.totalRaffleTickets += raffleTickets;
     }
-    if((<HTMLInputElement>document.getElementById('donation')) && (<HTMLInputElement>document.getElementById('donation')).value) {
-      const donation = +(<HTMLInputElement>document.getElementById('donation')).value;
-      this.totalCost += donation;
+    if(this.elementHasValue('donation')) {
+      this.donation = +(<HTMLInputElement>document.getElementById('donation')).value;
+      this.totalCost += this.donation;
     }
   }
 
@@ -124,22 +130,30 @@ export class RegistrationComponent {
     }
   }
 
+  private elementHasValue(id: string): boolean {
+    return !!((<HTMLInputElement>document.getElementById(id)) && (<HTMLInputElement>document.getElementById(id)).value);
+  }
+
   public submitRegistration(): void {
+    let comments = '';
+    if(this.elementHasValue('comments')){
+      comments = (<HTMLInputElement>document.getElementById('comments')).value;
+    }
     const body = {
-      "participation" : "Single",
-      "totalCost": 700,
-      "totalGolfers": 1,
-      "totalLunches": 2,
-      "donation": 25,
-      "comments": "Thanks for running the tournament!",
-      "primaryName": "Joe",
-      "primaryEmail": "osu5nc@gmail.com",
-      "primaryMailingAddress": "123 Fake Street",
-      "primaryCity": "Bradenton",
-      "primaryState": "FL",
-      "primaryZip" : "12345",
-      "primaryPhone": "555-555-5555",
-      "lunch2Name": "Hope Ramer"
+      participation: this.participation,
+      totalCost: this.totalCost,
+      totalGolfers: this.totalGolfers,
+      totalLunches: this.totalLunches,
+      donation: this.donation,
+      comments,
+      primaryName: "Joe",
+      primaryEmail: "osu5nc@gmail.com",
+      primaryMailingAddress: "123 Fake Street",
+      primaryCity: "Bradenton",
+      primaryState: "FL",
+      primaryZip: "12345",
+      primaryPhone: "555-555-5555",
+      lunch2Name: "Hope Ramer"
     };
     this.registrationService.register(body).subscribe(() => {
       alert('Registration Complete!');
