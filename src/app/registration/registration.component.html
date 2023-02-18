@@ -24,6 +24,9 @@
             </fieldset>
             <hr />
             <div *ngIf="holeSponsor"><strong style="font-size:20px">Thank you for sponsoring a hole!</strong><br /><hr/></div>
+            <div *ngIf="holeSponsor || participation === 'lunchOnly'">
+                Please enter your contact information:
+            </div>
             <div *ngIf="totalGolfers > 0">
                 Please enter details for {{totalGolfers}} golfers:
                 <br />
