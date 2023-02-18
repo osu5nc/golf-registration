@@ -158,8 +158,8 @@ export class RegistrationComponent {
       primaryZip: this.getHTMLValue('zip1'),
       primaryPhone: this.getHTMLValue('phone1')
     };
-    this.registrationService.register(body).subscribe(() => {
-      alert('Registration Complete!');
+    this.registrationService.register(body).subscribe((response) => {
+      alert('Confirmation Number:' + response._id);
     });
   }
 }
