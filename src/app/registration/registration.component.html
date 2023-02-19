@@ -275,7 +275,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="city2">City:</label>
-                        <input type ="text" id="city2" class="form-control">
+                        <input type ="text" id="city2" class="form-control" (change)="invalidCity2 = false;">
                     </div>
                     <div class="form-group col-md-2">
                         <label for="state2">State:</label>
@@ -335,7 +335,7 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label for="zip2">Zip:</label>
-                        <input type ="text" id="zip2" class="form-control">
+                        <input type ="text" id="zip2" class="form-control" (change)="invalidZip2 = false;">
                     </div>
                 </div>
                 <div class="row" id="invalidCityZip2" *ngIf="invalidCity2 || invalidZip2">
@@ -381,7 +381,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="city3">City:</label>
-                        <input type ="text" id="city3" class="form-control">
+                        <input type ="text" id="city3" class="form-control" (change)="invalidCity3 = false;">
                     </div>
                     <div class="form-group col-md-2">
                         <label for="state3">State:</label>
@@ -441,7 +441,7 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label for="zip3">Zip:</label>
-                        <input type ="text" id="zip3" class="form-control">
+                        <input type ="text" id="zip3" class="form-control" (change)="invalidZip3 = false;">
                     </div>
                 </div>
                 <div class="row" id="invalidCityZip3" *ngIf="invalidCity3 || invalidZip3">
@@ -487,7 +487,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="city4">City:</label>
-                        <input type ="text" id="city4" class="form-control">
+                        <input type ="text" id="city4" class="form-control" (change)="invalidCity4 = false;">
                     </div>
                     <div class="form-group col-md-2">
                         <label for="state4">State:</label>
@@ -547,7 +547,7 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label for="zip4">Zip:</label>
-                        <input type ="text" id="zip4" class="form-control">
+                        <input type ="text" id="zip4" class="form-control" (change)="invalidZip4 = false;">
                     </div>
                 </div>
                 <div class="row" id="invalidCityZip4" *ngIf="invalidCity4 || invalidZip4">
