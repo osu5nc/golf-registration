@@ -117,7 +117,7 @@
                         <input type ="text" id="zip1" class="form-control" (change)="invalidZip = false;">
                     </div>
                 </div>
-                <div class="row" id="invalidCityStateZip" *ngIf="invalidCity || invalidZip">
+                <div class="row" id="invalidCityZip" *ngIf="invalidCity || invalidZip">
                     <div class="form-group col-md-6">
                         <div class="alert alert-danger" style="font-size:15px;">
                             <ng-container *ngIf="invalidCity">Enter your city.</ng-container>&nbsp;&nbsp;
@@ -232,7 +232,7 @@
                         <input type ="text" id="zip1" class="form-control" (change)="invalidZip = false;">
                     </div>
                 </div>
-                <div class="row" id="invalidCityStateZip" *ngIf="invalidCity || invalidZip">
+                <div class="row" id="invalidCityZip" *ngIf="invalidCity || invalidZip">
                     <div class="form-group col-md-6">
                         <div class="alert alert-danger" style="font-size:15px;">
                             <ng-container *ngIf="invalidCity">Enter your city.</ng-container>&nbsp;&nbsp;
@@ -338,6 +338,14 @@
                         <input type ="text" id="zip2" class="form-control">
                     </div>
                 </div>
+                <div class="row" id="invalidCityZip2" *ngIf="invalidCity2 || invalidZip2">
+                    <div class="form-group col-md-6">
+                        <div class="alert alert-danger" style="font-size:15px;">
+                            <ng-container *ngIf="invalidCity2">Enter your city.</ng-container>&nbsp;&nbsp;
+                            <ng-container *ngIf="invalidZip2">Enter your zip.</ng-container>
+                        </div>
+                    </div>
+                </div>
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="email2">Email Address:</label>
@@ -436,6 +444,14 @@
                         <input type ="text" id="zip3" class="form-control">
                     </div>
                 </div>
+                <div class="row" id="invalidCityZip3" *ngIf="invalidCity3 || invalidZip3">
+                    <div class="form-group col-md-6">
+                        <div class="alert alert-danger" style="font-size:15px;">
+                            <ng-container *ngIf="invalidCity3">Enter your city.</ng-container>&nbsp;&nbsp;
+                            <ng-container *ngIf="invalidZip3">Enter your zip.</ng-container>
+                        </div>
+                    </div>
+                </div>
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="email3">Email Address:</label>
@@ -532,6 +548,14 @@
                     <div class="form-group col-md-2">
                         <label for="zip4">Zip:</label>
                         <input type ="text" id="zip4" class="form-control">
+                    </div>
+                </div>
+                <div class="row" id="invalidCityZip4" *ngIf="invalidCity4 || invalidZip4">
+                    <div class="form-group col-md-6">
+                        <div class="alert alert-danger" style="font-size:15px;">
+                            <ng-container *ngIf="invalidCity4">Enter your city.</ng-container>&nbsp;&nbsp;
+                            <ng-container *ngIf="invalidZip4">Enter your zip.</ng-container>
+                        </div>
                     </div>
                 </div>
                 <div class="form-row">

@@ -207,6 +207,14 @@ export class RegistrationComponent {
       }
     }
     if (this.getHTMLValue('name2') !== '') {
+      if (this.getHTMLValue('city2') === '') {
+        formValid = false;
+        this.invalidCity2 = true;
+      }
+      if (this.getHTMLValue('zip2') === '') {
+        formValid = false;
+        this.invalidZip2 = true;
+      }
       if (this.getHTMLValue('email2') === '') {
         formValid = false;
         this.invalidEmail2 = true;
@@ -217,6 +225,14 @@ export class RegistrationComponent {
       }
     }
     if (this.getHTMLValue('name3') !== '') {
+      if (this.getHTMLValue('city3') === '') {
+        formValid = false;
+        this.invalidCity3 = true;
+      }
+      if (this.getHTMLValue('zip3') === '') {
+        formValid = false;
+        this.invalidZip3 = true;
+      }
       if (this.getHTMLValue('email3') === '') {
         formValid = false;
         this.invalidEmail3 = true;
@@ -227,6 +243,14 @@ export class RegistrationComponent {
       }
     }
     if (this.getHTMLValue('name4') !== '') {
+      if (this.getHTMLValue('city4') === '') {
+        formValid = false;
+        this.invalidCity4 = true;
+      }
+      if (this.getHTMLValue('zip4') === '') {
+        formValid = false;
+        this.invalidZip4 = true;
+      }
       if (this.getHTMLValue('email4') === '') {
         formValid = false;
         this.invalidEmail4 = true;
