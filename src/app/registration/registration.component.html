@@ -24,7 +24,7 @@
             </fieldset>
             <hr />
             <div *ngIf="holeSponsor"><strong style="font-size:20px">Thank you for sponsoring a hole!</strong><br /><hr/></div>
-            <div *ngIf="holeSponsor || participation === 'lunchOnly'">
+            <div *ngIf="participation === 'holeSponsor' || participation === 'lunchOnly'">
                 Please enter your contact information:
                 <br /><br />
                 <div class="form-row">
@@ -287,7 +287,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="email2">Email Address:</label>
-                        <input type ="email" id="email1" class="form-control">
+                        <input type ="email" id="email2" class="form-control">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="phone2">Phone Number:</label>

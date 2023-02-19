@@ -148,7 +148,7 @@ export class RegistrationComponent {
     if(this.elementHasValue('comments')){
       comments = this.getHTMLValue('comments');
     }
-    const body = {
+    const body: any = {
       participation: this.participation,
       totalCost: this.totalCost,
       totalGolfers: this.totalGolfers,
@@ -164,10 +164,25 @@ export class RegistrationComponent {
       primaryZip: this.getHTMLValue('zip1'),
       primaryPhone: this.getHTMLValue('phone1')
     };
+    this.setGolfer('2', body);
+    this.setGolfer('3', body);
+    this.setGolfer('4', body);
     this.registrationService.register(body).subscribe((response) => {
       this.golfDataService.confirmationNumber = response._id;
       this.golfDataService.amountDue = response.totalCost;
       this.router.navigateByUrl('payment');
     });
+  }
+
+  private setGolfer(id: string, body: any): void {
+    if(this.elementHasValue(`name${id}`)){
+      body[`golfer${id}Name`] = this.getHTMLValue(`name${id}`);
+      body[`golfer${id}Email`] = this.getHTMLValue(`email${id}`);
+      body[`golfer${id}MailingAddress`] = this.getHTMLValue(`address${id}`);
+      body[`golfer${id}City`] = this.getHTMLValue(`city${id}`);
+      body[`golfer${id}State`] = this.getHTMLValue(`state${id}`);
+      body[`golfer${id}Zip`] = this.getHTMLValue(`zip${id}`);
+      body[`golfer${id}Phone`] = this.getHTMLValue(`phone${id}`);
+    }
   }
 }
