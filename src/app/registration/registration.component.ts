@@ -63,6 +63,7 @@ export class RegistrationComponent {
   emptyZip4 = false;
 
   invalidDonation = false;
+  saveInProgress = false;
 
   public calculateTotalCost(): void {
     this.participation = (<any>document.forms)['golfSignup'].elements['participation'].value;
@@ -308,9 +309,11 @@ export class RegistrationComponent {
   }
 
   public submitRegistration(): void {
+    this.saveInProgress = true;
     if(this.validateForm()) {
       this.postRegistration();
     } else {
+      this.saveInProgress = false;
       this.showElement('invalidForm');
       window.scrollTo(0,0);
     }
@@ -350,6 +353,7 @@ export class RegistrationComponent {
       this.golfDataService.confirmationNumber = response._id;
       this.golfDataService.amountDue = response.totalCost;
       this.router.navigateByUrl('payment');
+      this.saveInProgress = false;
     });
   }
 
