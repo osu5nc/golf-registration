@@ -136,7 +136,7 @@ export class RegistrationComponent {
         this.totalLunches ++;
       }
     }
-    if(this.elementHasValue('raffle')) {
+    if(this.extraRaffle && this.elementHasValue('raffle')) {
       const raffleTickets = +this.getHTMLValue('raffle');
       const raffleCost = raffleTickets * 20 / 8;
       this.totalCost += raffleCost;
