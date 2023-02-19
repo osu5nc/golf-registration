@@ -32,6 +32,9 @@ export class RegistrationComponent {
 
   public calculateTotalCost(): void {
     this.participation = (<any>document.forms)['golfSignup'].elements['participation'].value;
+    if(this.participation) {
+      this.hideElement('invalidParticipation');
+    }
     if (this.participation == 'scarlet') {
       this.totalCost = this.GOLF.scarletPrice;
       this.totalLunches = 4;
@@ -144,7 +147,24 @@ export class RegistrationComponent {
     return (<HTMLInputElement>document.getElementById(id)).value;
   }
 
+  private validateForm(): boolean {
+    let formValid = true;
+    if (this.participation === '') {
+      this.showElement('invalidParticipation');
+      formValid = false;
+    }
+    return formValid;
+  }
+
   public submitRegistration(): void {
+    if(this.validateForm()) {
+      this.postRegistration();
+    } else {
+      alert('Form invalid!');
+    }
+  }
+
+  private postRegistration() {
     let comments = '';
     if(this.elementHasValue('comments')){
       comments = this.getHTMLValue('comments');
@@ -197,5 +217,13 @@ export class RegistrationComponent {
     if(this.elementHasValue(`lunch${id}`)){
       body[`lunch${id}Name`] = this.getHTMLValue(`lunch${id}`);
     }
+  }
+
+  private showElement(id: string) {
+    (<HTMLElement>document.getElementById(id)).style.display = 'block';
+  }
+
+  private hideElement(id: string) {
+    (<HTMLElement>document.getElementById(id)).style.display = 'none';
   }
 }

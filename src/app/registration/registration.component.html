@@ -5,7 +5,7 @@
             <div><strong style="font-size:30px;">Golf Sign Up</strong></div>
             <br />
             <fieldset>
-                <legend>Please choose participation level and complete information below</legend>
+                <legend>Please choose participation level and complete information below:</legend>
                 <div style="padding-bottom:5px;">
                     <input type="radio" name="participation" id="scarlet" value="scarlet" (click)="calculateTotalCost()"><span style="padding-left:5px;"><label for="scarlet"><strong>Scarlet Sponsor</strong> (${{GOLF.scarletPrice}}) includes Hole Sponsorship, 4 golfers, lunch (4) and 12 raffle tickets</label></span>
                 </div>
@@ -22,6 +22,9 @@
                     <input type="radio" name="participation" id="lunchOnly" value="lunchOnly" (click)="calculateTotalCost()"><span style="padding-left:5px;"><label for="lunchOnly"><strong>Lunch Only</strong> (${{GOLF.lunchPrice}}) does not include golf</label></span>
                 </div>
             </fieldset>
+            <div class="invalid-feedback" style="font-size:15px;" id="invalidParticipation">
+                Please choose your participation.
+            </div>
             <hr />
             <div *ngIf="holeSponsor"><strong style="font-size:20px">Thank you for sponsoring a hole!</strong><br /><hr/></div>
             <div *ngIf="participation === 'holeSponsor' || participation === 'lunchOnly'">
