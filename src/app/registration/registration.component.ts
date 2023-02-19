@@ -32,6 +32,8 @@ export class RegistrationComponent {
 
   invalidName = false;
   invalidAddress = false;
+  invalidCity = false;
+  invalidZip = false;
 
   public calculateTotalCost(): void {
     this.participation = (<any>document.forms)['golfSignup'].elements['participation'].value;
@@ -163,6 +165,14 @@ export class RegistrationComponent {
       if (this.getHTMLValue('address1') === '') {
         formValid = false;
         this.invalidAddress = true;
+      }
+      if (this.getHTMLValue('city1') === '') {
+        formValid = false;
+        this.invalidCity = true;
+      }
+      if (this.getHTMLValue('zip1') === '') {
+        formValid = false;
+        this.invalidZip = true;
       }
     }
     return formValid;
