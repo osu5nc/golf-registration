@@ -58,7 +58,7 @@ export class RegistrationComponent {
       this.raffleIncluded = true;
     } else if (this.participation == 'holeSponsor') {
       this.totalCost = this.GOLF.holeSponsorPrice;
-      this.totalLunches = 1;
+      this.totalLunches = 0;
       this.totalGolfers = 0;
       this.holeSponsor = true;
       this.totalRaffleTickets = 0;

@@ -16,7 +16,7 @@
                     <input type="radio" name="participation" id="single" value="single" (click)="calculateTotalCost()"><span style="padding-left:5px;"><label for="single"><strong>Single</strong> (${{GOLF.singlePrice}}) includes lunch and 3 raffle tickets</label></span>
                 </div>
                 <div style="padding-bottom:5px;">
-                    <input type="radio" name="participation" id="holeSponsor" value="holeSponsor" (click)="calculateTotalCost()"><span style="padding-left:5px;"><label for="holeSponsor"><strong>Hole Sponsor</strong> (${{GOLF.holeSponsorPrice}}) includes lunch (does not include golf)</label></span>
+                    <input type="radio" name="participation" id="holeSponsor" value="holeSponsor" (click)="calculateTotalCost()"><span style="padding-left:5px;"><label for="holeSponsor"><strong>Hole Sponsor</strong> (${{GOLF.holeSponsorPrice}}) does not include lunch or golf</label></span>
                 </div>
                 <div style="padding-bottom:5px;">
                     <input type="radio" name="participation" id="lunchOnly" value="lunchOnly" (click)="calculateTotalCost()"><span style="padding-left:5px;"><label for="lunchOnly"><strong>Lunch Only</strong> (${{GOLF.lunchPrice}}) does not include golf</label></span>
@@ -478,7 +478,12 @@
             <br />
             <ng-container *ngIf="totalCost > 0">
                 <fieldset>
-                <legend><ng-container *ngIf="skippingGolf; else golfing">You are</ng-container><ng-template #golfing>Each golfer is</ng-template> signed up for a lunch.  Would you like to sign others up for lunch (${{GOLF.lunchPrice}}/each)?</legend>
+                    <ng-container *ngIf="participation==='holeSponsor'; else lunch">
+                        <legend>You are not signed up for lunch.  Would you like to sign up?</legend>
+                    </ng-container>
+                    <ng-template #lunch>
+                        <legend><ng-container *ngIf="skippingGolf; else golfing">You are</ng-container><ng-template #golfing>Each golfer is</ng-template> signed up for a lunch.  Would you like to sign others up for lunch (${{GOLF.lunchPrice}}/each)?</legend>
+                    </ng-template>
                 <div style="padding-bottom:5px;">
                     <input type="radio" name="extraLunch" id="lunchYes" value="lunchYes" (click)="showExtraLunch()"><span style="padding-left:5px;"><label for="lunchYes">Yes</label></span>
                 </div>
