@@ -11,10 +11,11 @@ import { RegistrationService } from '../registration.service';
 })
 export class RegistrationComponent {
 
-  constructor(private registrationService: RegistrationService,
-              private golfDataService: GolfDataService,
-              private router: Router
-              ) {}
+  constructor(
+    private registrationService: RegistrationService,
+    private golfDataService: GolfDataService,
+    private router: Router
+  ) {}
 
   totalCost: number = 0;
   totalLunches: number = 0;
@@ -167,6 +168,10 @@ export class RegistrationComponent {
     this.setGolfer('2', body);
     this.setGolfer('3', body);
     this.setGolfer('4', body);
+    this.setLunch('1', body);
+    this.setLunch('2', body);
+    this.setLunch('3', body);
+    this.setLunch('4', body);
     this.registrationService.register(body).subscribe((response) => {
       this.golfDataService.confirmationNumber = response._id;
       this.golfDataService.amountDue = response.totalCost;
@@ -183,6 +188,12 @@ export class RegistrationComponent {
       body[`golfer${id}State`] = this.getHTMLValue(`state${id}`);
       body[`golfer${id}Zip`] = this.getHTMLValue(`zip${id}`);
       body[`golfer${id}Phone`] = this.getHTMLValue(`phone${id}`);
+    }
+  }
+
+  private setLunch(id: string, body: any): void {
+    if(this.elementHasValue(`lunch${id}`)){
+      body[`lunch${id}Name`] = this.getHTMLValue(`lunch${id}`);
     }
   }
 }
