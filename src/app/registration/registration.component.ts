@@ -156,6 +156,7 @@ export class RegistrationComponent {
       totalLunches: this.totalLunches,
       donation: this.donation,
       holeSponsor: this.holeSponsor,
+      totalRaffleTickets: this.totalRaffleTickets,
       comments,
       primaryName: this.getHTMLValue('name1'),
       primaryEmail: this.getHTMLValue('email1'),
@@ -164,6 +165,7 @@ export class RegistrationComponent {
       primaryState: this.getHTMLValue('state1'),
       primaryZip: this.getHTMLValue('zip1'),
       primaryPhone: this.getHTMLValue('phone1')
+      
     };
     this.setGolfer('2', body);
     this.setGolfer('3', body);
