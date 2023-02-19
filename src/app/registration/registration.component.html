@@ -114,14 +114,15 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label for="zip1">Zip:</label>
-                        <input type ="text" id="zip1" class="form-control" (change)="invalidZip = false;">
+                        <input type ="text" id="zip1" class="form-control" (change)="invalidZip = false; emptyZip = false;">
                     </div>
                 </div>
-                <div class="row" id="invalidCityZip" *ngIf="invalidCity || invalidZip">
+                <div class="row" id="invalidCityZip" *ngIf="invalidCity || invalidZip || emptyZip">
                     <div class="form-group col-md-6">
                         <div class="alert alert-danger" style="font-size:15px;">
                             <ng-container *ngIf="invalidCity">Enter your city.</ng-container>&nbsp;&nbsp;
-                            <ng-container *ngIf="invalidZip">Enter your zip.</ng-container>
+                            <ng-container *ngIf="emptyZip">Enter your zip.</ng-container>
+                            <ng-container *ngIf="invalidZip">Enter 5 digits for your zip</ng-container>
                         </div>
                     </div>
                 </div>
@@ -229,7 +230,7 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label for="zip1">Zip:</label>
-                        <input type ="text" id="zip1" class="form-control" (change)="invalidZip = false;">
+                        <input type ="text" id="zip1" class="form-control" (change)="invalidZip = false; emptyZip = false;">
                     </div>
                 </div>
                 <div class="row" id="invalidCityZip" *ngIf="invalidCity || invalidZip || emptyZip">

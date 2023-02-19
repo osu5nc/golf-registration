@@ -198,7 +198,7 @@ export class RegistrationComponent {
       if (this.getHTMLValue('zip1') === '') {
         formValid = false;
         this.emptyZip = true;
-      } else if (zipRegex.test(this.getHTMLValue('zip1'))) {
+      } else if (!zipRegex.test(this.getHTMLValue('zip1'))) {
         formValid = false;
         this.invalidZip = true;
       }
