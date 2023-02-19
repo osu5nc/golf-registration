@@ -160,7 +160,8 @@ export class RegistrationComponent {
     if(this.validateForm()) {
       this.postRegistration();
     } else {
-      alert('Form invalid!');
+      this.showElement('invalidForm');
+      window.scrollTo(0,0);
     }
   }
 

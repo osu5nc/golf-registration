@@ -4,6 +4,9 @@
         <form id="golfSignup">
             <div><strong style="font-size:30px;">Golf Sign Up</strong></div>
             <br />
+            <div class="alert alert-danger" role="alert" style="font-size:20px;display:none;width:700px;" id="invalidForm">
+                Please correct form errors to submit your registration.
+            </div>
             <fieldset>
                 <legend>Please choose participation level and complete information below:</legend>
                 <div style="padding-bottom:5px;">
@@ -22,7 +25,7 @@
                     <input type="radio" name="participation" id="lunchOnly" value="lunchOnly" (click)="calculateTotalCost()"><span style="padding-left:5px;"><label for="lunchOnly"><strong>Lunch Only</strong> (${{GOLF.lunchPrice}}) does not include golf</label></span>
                 </div>
             </fieldset>
-            <div class="invalid-feedback" style="font-size:15px;" id="invalidParticipation">
+            <div class="alert alert-danger" style="font-size:15px;display:none;width:300px;" id="invalidParticipation">
                 Please choose your participation.
             </div>
             <hr />
