@@ -30,6 +30,9 @@ export class RegistrationComponent {
   donation: number = 0;
   GOLF = constants;
 
+  invalidName = false;
+  invalidAddress = false;
+
   public calculateTotalCost(): void {
     this.participation = (<any>document.forms)['golfSignup'].elements['participation'].value;
     if(this.participation) {
@@ -152,6 +155,15 @@ export class RegistrationComponent {
     if (this.participation === '') {
       this.showElement('invalidParticipation');
       formValid = false;
+    } else {
+      if (this.getHTMLValue('name1') === '') {
+        formValid = false;
+        this.invalidName = true;
+      }
+      if (this.getHTMLValue('address1') === '') {
+        formValid = false;
+        this.invalidAddress = true;
+      }
     }
     return formValid;
   }
