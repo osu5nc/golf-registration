@@ -36,6 +36,7 @@ export class RegistrationComponent {
   invalidZip = false;
   invalidEmail = false;
   invalidPhone = false;
+  emptyZip = false;
 
   invalidName2 = false;
   invalidAddress2 = false;
@@ -176,6 +177,7 @@ export class RegistrationComponent {
   }
 
   private validateForm(): boolean {
+    const zipRegex = /\d{5}/;
     let formValid = true;
     if (this.participation === '') {
       this.showElement('invalidParticipation');
@@ -195,6 +197,9 @@ export class RegistrationComponent {
       }
       if (this.getHTMLValue('zip1') === '') {
         formValid = false;
+        this.emptyZip = true;
+      } else if (zipRegex.test(this.getHTMLValue('zip1'))) {
+        formValid = false;
         this.invalidZip = true;
       }
       if (this.getHTMLValue('email1') === '') {
@@ -206,7 +211,7 @@ export class RegistrationComponent {
         this.invalidPhone = true;
       }
     }
-    if (this.getHTMLValue('name2') !== '') {
+    if (this.elementHasValue('name2')) {
       if(this.getHTMLValue('address2') === '') {
         formValid = false;
         this.invalidAddress2 = true;
@@ -227,11 +232,11 @@ export class RegistrationComponent {
         formValid = false;
         this.invalidPhone2 = true;
       }
-    } else if (this.getHTMLValue('address2') !== '') {
+    } else if (this.elementHasValue('address2')) {
       this.invalidName2 = true;
       formValid = false;
     }
-    if (this.getHTMLValue('name3') !== '') {
+    if (this.elementHasValue('name3')) {
       if(this.getHTMLValue('address3') === '') {
         formValid = false;
         this.invalidAddress3 = true;
@@ -252,11 +257,11 @@ export class RegistrationComponent {
         formValid = false;
         this.invalidPhone3 = true;
       }
-    } else if (this.getHTMLValue('address3') !== '') {
+    } else if (this.elementHasValue('address3')) {
       this.invalidName3 = true;
       formValid = false;
     }
-    if (this.getHTMLValue('name4') !== '') {
+    if (this.elementHasValue('name4')) {
       if(this.getHTMLValue('address4') === '') {
         formValid = false;
         this.invalidAddress4 = true;
@@ -277,7 +282,7 @@ export class RegistrationComponent {
         formValid = false;
         this.invalidPhone4 = true;
       }
-    } else if (this.getHTMLValue('address4') !== '') {
+    } else if (this.elementHasValue('address4')) {
       this.invalidName4 = true;
       formValid = false;
     }
