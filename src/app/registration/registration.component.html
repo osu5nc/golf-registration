@@ -341,11 +341,19 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="email2">Email Address:</label>
-                        <input type ="email" id="email2" class="form-control">
+                        <input type ="email" id="email2" class="form-control" (change)="invalidEmail2 = false;">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="phone2">Phone Number:</label>
-                        <input type ="text" id="phone2" class="form-control">
+                        <input type ="text" id="phone2" class="form-control" (change)="invalidPhone2 = false;">
+                    </div>
+                </div>
+                <div class="row" id="invalidEmailPhone2" *ngIf="invalidEmail2 || invalidPhone2">
+                    <div class="form-group col-md-6">
+                        <div class="alert alert-danger" style="font-size:15px;">
+                            <ng-container *ngIf="invalidEmail2">Enter your email.</ng-container>&nbsp;&nbsp;
+                            <ng-container *ngIf="invalidPhone2">Enter your phone number.</ng-container>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -431,11 +439,19 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="email3">Email Address:</label>
-                        <input type ="email" id="email3" class="form-control">
+                        <input type ="email" id="email3" class="form-control" (change)="invalidEmail3 = false;">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="phone3">Phone Number:</label>
-                        <input type ="text" id="phone3" class="form-control">
+                        <input type ="text" id="phone3" class="form-control" (change)="invalidPhone3 = false;">
+                    </div>
+                </div>
+                <div class="row" id="invalidEmailPhone3" *ngIf="invalidEmail3 || invalidPhone3">
+                    <div class="form-group col-md-6">
+                        <div class="alert alert-danger" style="font-size:15px;">
+                            <ng-container *ngIf="invalidEmail3">Enter your email.</ng-container>&nbsp;&nbsp;
+                            <ng-container *ngIf="invalidPhone3">Enter your phone number.</ng-container>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -521,11 +537,19 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="email4">Email Address:</label>
-                        <input type ="email" id="email4" class="form-control">
+                        <input type ="email" id="email4" class="form-control" (change)="invalidEmail4 = false;">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="phone4">Phone Number:</label>
-                        <input type ="text" id="phone4" class="form-control">
+                        <input type ="text" id="phone4" class="form-control" (change)="invalidPhone4 = false;">
+                    </div>
+                </div>
+                <div class="row" id="invalidEmailPhone4" *ngIf="invalidEmail4 || invalidPhone4">
+                    <div class="form-group col-md-6">
+                        <div class="alert alert-danger" style="font-size:15px;">
+                            <ng-container *ngIf="invalidEmail4">Enter your email.</ng-container>&nbsp;&nbsp;
+                            <ng-container *ngIf="invalidPhone4">Enter your phone number.</ng-container>
+                        </div>
                     </div>
                 </div>
             </div>

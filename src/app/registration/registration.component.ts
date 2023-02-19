@@ -37,6 +37,27 @@ export class RegistrationComponent {
   invalidEmail = false;
   invalidPhone = false;
 
+  invalidName2 = false;
+  invalidAddress2 = false;
+  invalidCity2 = false;
+  invalidZip2 = false;
+  invalidEmail2 = false;
+  invalidPhone2 = false;
+
+  invalidName3 = false;
+  invalidAddress3 = false;
+  invalidCity3 = false;
+  invalidZip3 = false;
+  invalidEmail3 = false;
+  invalidPhone3 = false;
+
+  invalidName4 = false;
+  invalidAddress4 = false;
+  invalidCity4 = false;
+  invalidZip4 = false;
+  invalidEmail4 = false;
+  invalidPhone4 = false;
+
   public calculateTotalCost(): void {
     this.participation = (<any>document.forms)['golfSignup'].elements['participation'].value;
     if(this.participation) {
@@ -183,6 +204,36 @@ export class RegistrationComponent {
       if (this.getHTMLValue('phone1') === '') {
         formValid = false;
         this.invalidPhone = true;
+      }
+    }
+    if (this.getHTMLValue('name2') !== '') {
+      if (this.getHTMLValue('email2') === '') {
+        formValid = false;
+        this.invalidEmail2 = true;
+      }
+      if (this.getHTMLValue('phone2') === '') {
+        formValid = false;
+        this.invalidPhone2 = true;
+      }
+    }
+    if (this.getHTMLValue('name3') !== '') {
+      if (this.getHTMLValue('email3') === '') {
+        formValid = false;
+        this.invalidEmail3 = true;
+      }
+      if (this.getHTMLValue('phone3') === '') {
+        formValid = false;
+        this.invalidPhone3 = true;
+      }
+    }
+    if (this.getHTMLValue('name4') !== '') {
+      if (this.getHTMLValue('email4') === '') {
+        formValid = false;
+        this.invalidEmail4 = true;
+      }
+      if (this.getHTMLValue('phone4') === '') {
+        formValid = false;
+        this.invalidPhone4 = true;
       }
     }
     return formValid;
