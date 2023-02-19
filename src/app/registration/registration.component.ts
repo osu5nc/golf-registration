@@ -90,7 +90,7 @@ export class RegistrationComponent {
       this.holeSponsor = false;
       this.totalRaffleTickets = 0;
     }
-    if(this.extraLunch || this.holeSponsor) {
+    if(this.extraLunch) {
       if(this.elementHasValue('lunch1')) {
         this.totalCost += this.GOLF.lunchPrice;
         this.totalLunches ++;
