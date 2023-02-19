@@ -16,10 +16,10 @@
                     <input type="radio" name="participation" id="gray" value="gray" (click)="calculateTotalCost()"><span style="padding-left:5px;"><label for="gray"><strong>Gray Sponsor</strong> (${{GOLF.grayPrice}}) includes Hole Sponsorship, 2 golfers, lunch (2) and 6 raffle tickets</label></span>
                 </div>
                 <div style="padding-bottom:5px;">
-                    <input type="radio" name="participation" id="single" value="single" (click)="calculateTotalCost()"><span style="padding-left:5px;"><label for="single"><strong>Single</strong> (${{GOLF.singlePrice}}) includes lunch and 3 raffle tickets</label></span>
+                    <input type="radio" name="participation" id="holeSponsor" value="holeSponsor" (click)="calculateTotalCost()"><span style="padding-left:5px;"><label for="holeSponsor"><strong>Hole Sponsor</strong> (${{GOLF.holeSponsorPrice}}) does not include lunch or golf</label></span>
                 </div>
                 <div style="padding-bottom:5px;">
-                    <input type="radio" name="participation" id="holeSponsor" value="holeSponsor" (click)="calculateTotalCost()"><span style="padding-left:5px;"><label for="holeSponsor"><strong>Hole Sponsor</strong> (${{GOLF.holeSponsorPrice}}) does not include lunch or golf</label></span>
+                    <input type="radio" name="participation" id="single" value="single" (click)="calculateTotalCost()"><span style="padding-left:5px;"><label for="single"><strong>Single</strong> (${{GOLF.singlePrice}}) includes lunch and 3 raffle tickets</label></span>
                 </div>
                 <div style="padding-bottom:5px;">
                     <input type="radio" name="participation" id="lunchOnly" value="lunchOnly" (click)="calculateTotalCost()"><span style="padding-left:5px;"><label for="lunchOnly"><strong>Lunch Only</strong> (${{GOLF.lunchPrice}}) does not include golf</label></span>
