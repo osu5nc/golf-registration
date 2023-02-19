@@ -345,14 +345,15 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label for="zip2">Zip:</label>
-                        <input type ="text" id="zip2" class="form-control" (change)="invalidZip2 = false;">
+                        <input type ="text" id="zip2" class="form-control" (change)="invalidZip2 = false; emptyZip2 = false;">
                     </div>
                 </div>
-                <div class="row" id="invalidCityZip2" *ngIf="invalidCity2 || invalidZip2">
+                <div class="row" id="invalidCityZip2" *ngIf="invalidCity2 || invalidZip2 || emptyZip2">
                     <div class="form-group col-md-6">
                         <div class="alert alert-danger" style="font-size:15px;">
                             <ng-container *ngIf="invalidCity2">Enter golfer's city.</ng-container>&nbsp;&nbsp;
-                            <ng-container *ngIf="invalidZip2">Enter golfer's zip.</ng-container>
+                            <ng-container *ngIf="emptyZip2">Enter golfer's zip.</ng-container>
+                            <ng-container *ngIf="invalidZip2">Enter 5 digits for golfer's zip</ng-container>
                         </div>
                     </div>
                 </div>
@@ -462,11 +463,12 @@
                         <input type ="text" id="zip3" class="form-control" (change)="invalidZip3 = false;">
                     </div>
                 </div>
-                <div class="row" id="invalidCityZip3" *ngIf="invalidCity3 || invalidZip3">
+                <div class="row" id="invalidCityZip3" *ngIf="invalidCity3 || invalidZip3 || emptyZip3">
                     <div class="form-group col-md-6">
                         <div class="alert alert-danger" style="font-size:15px;">
                             <ng-container *ngIf="invalidCity3">Enter golfer's city.</ng-container>&nbsp;&nbsp;
-                            <ng-container *ngIf="invalidZip3">Enter golfer's zip.</ng-container>
+                            <ng-container *ngIf="emptyZip3">Enter golfer's zip.</ng-container>
+                            <ng-container *ngIf="invalidZip3">Enter 5 digits for golfer's zip</ng-container>
                         </div>
                     </div>
                 </div>
@@ -576,11 +578,12 @@
                         <input type ="text" id="zip4" class="form-control" (change)="invalidZip4 = false;">
                     </div>
                 </div>
-                <div class="row" id="invalidCityZip4" *ngIf="invalidCity4 || invalidZip4">
+                <div class="row" id="invalidCityZip4" *ngIf="invalidCity4 || invalidZip4 || emptyZip4">
                     <div class="form-group col-md-6">
                         <div class="alert alert-danger" style="font-size:15px;">
                             <ng-container *ngIf="invalidCity4">Enter golfer's city.</ng-container>&nbsp;&nbsp;
-                            <ng-container *ngIf="invalidZip4">Enter golfer's zip.</ng-container>
+                            <ng-container *ngIf="emptyZip4">Enter golfer's zip.</ng-container>
+                            <ng-container *ngIf="invalidZip4">Enter 5 digits for golfer's zip</ng-container>
                         </div>
                     </div>
                 </div>

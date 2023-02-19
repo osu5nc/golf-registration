@@ -44,6 +44,7 @@ export class RegistrationComponent {
   invalidZip2 = false;
   invalidEmail2 = false;
   invalidPhone2 = false;
+  emptyZip2 = false;
 
   invalidName3 = false;
   invalidAddress3 = false;
@@ -51,6 +52,7 @@ export class RegistrationComponent {
   invalidZip3 = false;
   invalidEmail3 = false;
   invalidPhone3 = false;
+  emptyZip3 = false;
 
   invalidName4 = false;
   invalidAddress4 = false;
@@ -58,6 +60,7 @@ export class RegistrationComponent {
   invalidZip4 = false;
   invalidEmail4 = false;
   invalidPhone4 = false;
+  emptyZip4 = false;
 
   public calculateTotalCost(): void {
     this.participation = (<any>document.forms)['golfSignup'].elements['participation'].value;
@@ -177,7 +180,7 @@ export class RegistrationComponent {
   }
 
   private validateForm(): boolean {
-    const zipRegex = /\d{5}/;
+    const zipRegex = /^\d{5}$/;
     let formValid = true;
     if (this.participation === '') {
       this.showElement('invalidParticipation');
@@ -222,6 +225,9 @@ export class RegistrationComponent {
       }
       if (this.getHTMLValue('zip2') === '') {
         formValid = false;
+        this.emptyZip2 = true;
+      } else if (!zipRegex.test(this.getHTMLValue('zip2'))) {
+        formValid = false;
         this.invalidZip2 = true;
       }
       if (this.getHTMLValue('email2') === '') {
@@ -247,6 +253,9 @@ export class RegistrationComponent {
       }
       if (this.getHTMLValue('zip3') === '') {
         formValid = false;
+        this.emptyZip3 = true;
+      } else if (!zipRegex.test(this.getHTMLValue('zip3'))) {
+        formValid = false;
         this.invalidZip3 = true;
       }
       if (this.getHTMLValue('email3') === '') {
@@ -271,6 +280,9 @@ export class RegistrationComponent {
         this.invalidCity4 = true;
       }
       if (this.getHTMLValue('zip4') === '') {
+        formValid = false;
+        this.emptyZip4 = true;
+      } else if (!zipRegex.test(this.getHTMLValue('zip4'))) {
         formValid = false;
         this.invalidZip4 = true;
       }
