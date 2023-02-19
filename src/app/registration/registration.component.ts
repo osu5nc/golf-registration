@@ -207,6 +207,10 @@ export class RegistrationComponent {
       }
     }
     if (this.getHTMLValue('name2') !== '') {
+      if(this.getHTMLValue('address2') === '') {
+        formValid = false;
+        this.invalidAddress2 = true;
+      }
       if (this.getHTMLValue('city2') === '') {
         formValid = false;
         this.invalidCity2 = true;
@@ -225,6 +229,10 @@ export class RegistrationComponent {
       }
     }
     if (this.getHTMLValue('name3') !== '') {
+      if(this.getHTMLValue('address3') === '') {
+        formValid = false;
+        this.invalidAddress3 = true;
+      }
       if (this.getHTMLValue('city3') === '') {
         formValid = false;
         this.invalidCity3 = true;
@@ -243,6 +251,10 @@ export class RegistrationComponent {
       }
     }
     if (this.getHTMLValue('name4') !== '') {
+      if(this.getHTMLValue('address4') === '') {
+        formValid = false;
+        this.invalidAddress4 = true;
+      }
       if (this.getHTMLValue('city4') === '') {
         formValid = false;
         this.invalidCity4 = true;

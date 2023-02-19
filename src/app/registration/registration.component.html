@@ -265,11 +265,19 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         (2) <label for="name2">Name:</label>
-                        <input type ="text" id="name2" class="form-control">
+                        <input type ="text" id="name2" class="form-control" (change)="invalidName2 = false;">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="address2">Mailing Address:</label>
-                        <input type ="text" id="address2" class="form-control">
+                        <input type ="text" id="address2" class="form-control" (change)="invalidAddress2 = false;">
+                    </div>
+                </div>
+                <div class="row" id="invalidNameAddress2" *ngIf="invalidName2 || invalidAddress2">
+                    <div class="form-group col-md-6">
+                        <div class="alert alert-danger" style="font-size:15px;" >
+                            <ng-container *ngIf="invalidName2">Enter golfer's name.</ng-container>&nbsp;&nbsp;
+                            <ng-container *ngIf="invalidAddress2">Enter golfers' address.</ng-container>
+                        </div>
                     </div>
                 </div>
                 <div class="form-row">
@@ -341,8 +349,8 @@
                 <div class="row" id="invalidCityZip2" *ngIf="invalidCity2 || invalidZip2">
                     <div class="form-group col-md-6">
                         <div class="alert alert-danger" style="font-size:15px;">
-                            <ng-container *ngIf="invalidCity2">Enter your city.</ng-container>&nbsp;&nbsp;
-                            <ng-container *ngIf="invalidZip2">Enter your zip.</ng-container>
+                            <ng-container *ngIf="invalidCity2">Enter golfer's city.</ng-container>&nbsp;&nbsp;
+                            <ng-container *ngIf="invalidZip2">Enter golfer's zip.</ng-container>
                         </div>
                     </div>
                 </div>
@@ -359,8 +367,8 @@
                 <div class="row" id="invalidEmailPhone2" *ngIf="invalidEmail2 || invalidPhone2">
                     <div class="form-group col-md-6">
                         <div class="alert alert-danger" style="font-size:15px;">
-                            <ng-container *ngIf="invalidEmail2">Enter your email.</ng-container>&nbsp;&nbsp;
-                            <ng-container *ngIf="invalidPhone2">Enter your phone number.</ng-container>
+                            <ng-container *ngIf="invalidEmail2">Enter golfer's email.</ng-container>&nbsp;&nbsp;
+                            <ng-container *ngIf="invalidPhone2">Enter golfer's phone number.</ng-container>
                         </div>
                     </div>
                 </div>
@@ -371,11 +379,19 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         (3) <label for="name3">Name:</label>
-                        <input type ="text" id="name3" class="form-control">
+                        <input type ="text" id="name3" class="form-control" (change)="invalidName3 = false;">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="address3">Mailing Address:</label>
-                        <input type ="text" id="address3" class="form-control">
+                        <input type ="text" id="address3" class="form-control" (change)="invalidAddress3 = false;">
+                    </div>
+                </div>
+                <div class="row" id="invalidNameAddress3" *ngIf="invalidName3 || invalidAddress3">
+                    <div class="form-group col-md-6">
+                        <div class="alert alert-danger" style="font-size:15px;" >
+                            <ng-container *ngIf="invalidName3">Enter golfer's name.</ng-container>&nbsp;&nbsp;
+                            <ng-container *ngIf="invalidAddress3">Enter golfer's address.</ng-container>
+                        </div>
                     </div>
                 </div>
                 <div class="form-row">
@@ -447,8 +463,8 @@
                 <div class="row" id="invalidCityZip3" *ngIf="invalidCity3 || invalidZip3">
                     <div class="form-group col-md-6">
                         <div class="alert alert-danger" style="font-size:15px;">
-                            <ng-container *ngIf="invalidCity3">Enter your city.</ng-container>&nbsp;&nbsp;
-                            <ng-container *ngIf="invalidZip3">Enter your zip.</ng-container>
+                            <ng-container *ngIf="invalidCity3">Enter golfer's city.</ng-container>&nbsp;&nbsp;
+                            <ng-container *ngIf="invalidZip3">Enter golfer's zip.</ng-container>
                         </div>
                     </div>
                 </div>
@@ -477,11 +493,19 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         (4) <label for="name4">Name:</label>
-                        <input type ="text" id="name4" class="form-control">
+                        <input type ="text" id="name4" class="form-control" (change)="invalidName4 = false;">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="address4">Mailing Address:</label>
-                        <input type ="text" id="address4" class="form-control">
+                        <input type ="text" id="address4" class="form-control" (change)="invalidAddress4 = false;">
+                    </div>
+                </div>
+                <div class="row" id="invalidNameAddress4" *ngIf="invalidName4 || invalidAddress4">
+                    <div class="form-group col-md-6">
+                        <div class="alert alert-danger" style="font-size:15px;" >
+                            <ng-container *ngIf="invalidName4">Enter golfer's name.</ng-container>&nbsp;&nbsp;
+                            <ng-container *ngIf="invalidAddress4">Enter golfer's address.</ng-container>
+                        </div>
                     </div>
                 </div>
                 <div class="form-row">
@@ -553,8 +577,8 @@
                 <div class="row" id="invalidCityZip4" *ngIf="invalidCity4 || invalidZip4">
                     <div class="form-group col-md-6">
                         <div class="alert alert-danger" style="font-size:15px;">
-                            <ng-container *ngIf="invalidCity4">Enter your city.</ng-container>&nbsp;&nbsp;
-                            <ng-container *ngIf="invalidZip4">Enter your zip.</ng-container>
+                            <ng-container *ngIf="invalidCity4">Enter golfer's city.</ng-container>&nbsp;&nbsp;
+                            <ng-container *ngIf="invalidZip4">Enter golfer's zip.</ng-container>
                         </div>
                     </div>
                 </div>
@@ -571,8 +595,8 @@
                 <div class="row" id="invalidEmailPhone4" *ngIf="invalidEmail4 || invalidPhone4">
                     <div class="form-group col-md-6">
                         <div class="alert alert-danger" style="font-size:15px;">
-                            <ng-container *ngIf="invalidEmail4">Enter your email.</ng-container>&nbsp;&nbsp;
-                            <ng-container *ngIf="invalidPhone4">Enter your phone number.</ng-container>
+                            <ng-container *ngIf="invalidEmail4">Enter golfer's email.</ng-container>&nbsp;&nbsp;
+                            <ng-container *ngIf="invalidPhone4">Enter golfer's phone number.</ng-container>
                         </div>
                     </div>
                 </div>
