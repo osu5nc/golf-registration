@@ -688,7 +688,14 @@
             <div class="row">
                 <div class="form-group col-md-3">
                     <label for="donation">Would you like to add a donation?</label>
-                    <input type ="text" id="donation" class="form-control" (blur)="calculateTotalCost()">
+                    <input type ="text" id="donation" class="form-control" (change)="invalidDonation = false;" (blur)="calculateTotalCost()">
+                </div>
+            </div>
+            <div class="row" id="invalidDonation" *ngIf="invalidDonation">
+                <div class="form-group col-md-6">
+                    <div class="alert alert-danger" style="font-size:15px;">
+                        Enter a valid amount, or clear the field.
+                    </div>
                 </div>
             </div>
             <hr />

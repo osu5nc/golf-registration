@@ -62,6 +62,8 @@ export class RegistrationComponent {
   invalidPhone4 = false;
   emptyZip4 = false;
 
+  invalidDonation = false;
+
   public calculateTotalCost(): void {
     this.participation = (<any>document.forms)['golfSignup'].elements['participation'].value;
     if(this.participation) {
@@ -141,7 +143,11 @@ export class RegistrationComponent {
     }
     if(this.elementHasValue('donation')) {
       this.donation = +this.getHTMLValue('donation');
-      this.totalCost += this.donation;
+      if (Number.isNaN(this.donation)) {
+        this.invalidDonation = true;
+      } else {
+        this.totalCost += this.donation;
+      }
     }
   }
 
