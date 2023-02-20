@@ -36,7 +36,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="name1">Name:</label>
-                        <input type ="text" id="name1" class="form-control" (change)="invalidName = false;">
+                        <input type ="text" id="name1" class="form-control" (change)="invalidName = false;" (blur)="updateName1();">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="address1">Mailing Address:</label>
@@ -152,7 +152,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         (1) <label for="name1">Name:</label>
-                        <input type ="text" id="name1" class="form-control" (change)="invalidName = false;">
+                        <input type ="text" id="name1" class="form-control" (change)="invalidName = false;" (blur)="updateName1();">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="address1">Mailing Address:</label>
@@ -677,6 +677,12 @@
                             <option value="72">72 tickets</option>
                             <option value="80">80 tickets</option>
                         </select>
+                    </div>
+                </div>
+                <div class="form-row" *ngIf="name1">
+                    <div class="form-group col-md-3">
+                        <label for="raffle1">Tickets for {{name1}}:</label>
+                        <input type ="text" id="raffle1" class="form-control" (change)="assignRaffleTickets()">
                     </div>
                 </div>
                 <br />

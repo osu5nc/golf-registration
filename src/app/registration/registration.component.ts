@@ -65,6 +65,8 @@ export class RegistrationComponent {
   invalidDonation = false;
   saveInProgress = false;
 
+  name1 = '';
+
   public calculateTotalCost(): void {
     this.participation = (<any>document.forms)['golfSignup'].elements['participation'].value;
     if(this.participation) {
@@ -136,7 +138,7 @@ export class RegistrationComponent {
         this.totalLunches ++;
       }
     }
-    if(this.extraRaffle && this.elementHasValue('raffle')) {
+    if((this.extraRaffle || this.participation === 'lunchOnly' || this.participation === 'holeSponsor') && this.elementHasValue('raffle')) {
       const raffleTickets = +this.getHTMLValue('raffle');
       const raffleCost = raffleTickets * 20 / 8;
       this.totalCost += raffleCost;
@@ -375,11 +377,19 @@ export class RegistrationComponent {
     }
   }
 
-  private showElement(id: string) {
+  private showElement(id: string): void {
     (<HTMLElement>document.getElementById(id)).style.display = 'block';
   }
 
-  private hideElement(id: string) {
+  private hideElement(id: string): void {
     (<HTMLElement>document.getElementById(id)).style.display = 'none';
+  }
+
+  public assignRaffleTickets(): void {
+
+  }
+
+  public updateName1(): void {
+    this.name1 = this.getHTMLValue('name1');
   }
 }
