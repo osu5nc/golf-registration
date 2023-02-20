@@ -66,6 +66,14 @@ export class RegistrationComponent {
   saveInProgress = false;
 
   name1 = '';
+  name1RaffleTickets = 0;
+  name2 = '';
+  name2RaffleTickets = 0;
+  name3 = '';
+  name3RaffleTickets = 0;
+  name4 = '';
+  name4RaffleTickets = 0;
+  unAssignedRaffleTickets = 0;
 
   public calculateTotalCost(): void {
     this.participation = (<any>document.forms)['golfSignup'].elements['participation'].value;
@@ -78,9 +86,15 @@ export class RegistrationComponent {
       this.totalGolfers = 4;
       this.holeSponsor = true;
       this.totalRaffleTickets = 12;
+      this.name1RaffleTickets = 3;
+      this.name2RaffleTickets = 3;
+      this.name3RaffleTickets = 3;
+      this.name4RaffleTickets = 3;
       this.skippingGolf = false;
       this.raffleIncluded = true;
     } else if (this.participation == 'gray') {
+      this.name1RaffleTickets = 3;
+      this.name2RaffleTickets = 3;
       this.totalCost = this.GOLF.grayPrice;
       this.totalLunches = 2;
       this.totalGolfers = 2;
@@ -89,6 +103,7 @@ export class RegistrationComponent {
       this.skippingGolf = false;
       this.raffleIncluded = true;
     } else if (this.participation == 'single') {
+      this.name1RaffleTickets = 3;
       this.totalCost = this.GOLF.singlePrice;
       this.totalLunches = 1;
       this.totalGolfers = 1;
@@ -137,6 +152,11 @@ export class RegistrationComponent {
         this.totalCost += this.GOLF.lunchPrice;
         this.totalLunches ++;
       }
+    }
+    if (this.participation === 'single' && this.totalLunches === 1) {
+      this.clearName2();
+      this.name1RaffleTickets = 0;
+      this.unAssignedRaffleTickets = 0;
     }
     if((this.extraRaffle || this.participation === 'lunchOnly' || this.participation === 'holeSponsor') && this.elementHasValue('raffle')) {
       const raffleTickets = +this.getHTMLValue('raffle');
@@ -307,6 +327,9 @@ export class RegistrationComponent {
       this.invalidName4 = true;
       formValid = false;
     }
+    if (this.unAssignedRaffleTickets !== 0) {
+      formValid = false;
+    }
     return formValid;
   }
 
@@ -386,10 +409,29 @@ export class RegistrationComponent {
   }
 
   public assignRaffleTickets(): void {
-
+    this.name1RaffleTickets = +this.getHTMLValue('raffle1');
+    this.name2RaffleTickets = +this.getHTMLValue('raffle2');
+    this.unAssignedRaffleTickets = this.totalRaffleTickets - this.name1RaffleTickets - this.name2RaffleTickets;
   }
 
   public updateName1(): void {
     this.name1 = this.getHTMLValue('name1');
+  }
+
+  public updateName2(): void {
+    this.name2 = this.getHTMLValue('name2');
+  }
+
+  public updateName3(): void {
+    this.name3 = this.getHTMLValue('name3');
+  }
+
+  public updateName4(): void {
+    this.name4 = this.getHTMLValue('name4');
+  }
+
+  private clearName2(): void {
+    this.name2 = '';
+    this.name2RaffleTickets = 0;
   }
 }

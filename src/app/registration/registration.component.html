@@ -267,7 +267,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         (2) <label for="name2">Name:</label>
-                        <input type ="text" id="name2" class="form-control" (change)="invalidName2 = false;">
+                        <input type ="text" id="name2" class="form-control" (change)="invalidName2 = false;" (blur)="updateName2();">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="address2">Mailing Address:</label>
@@ -382,7 +382,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         (3) <label for="name3">Name:</label>
-                        <input type ="text" id="name3" class="form-control" (change)="invalidName3 = false;">
+                        <input type ="text" id="name3" class="form-control" (change)="invalidName3 = false;" (blur)="updateName3();">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="address3">Mailing Address:</label>
@@ -497,7 +497,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         (4) <label for="name4">Name:</label>
-                        <input type ="text" id="name4" class="form-control" (change)="invalidName4 = false;">
+                        <input type ="text" id="name4" class="form-control" (change)="invalidName4 = false;" (blur)="updateName4();">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="address4">Mailing Address:</label>
@@ -664,7 +664,7 @@
                 <div class="row">
                     <div class="form-group col-md-2">
                         <label for="raffle">$20 per 8 tickets:</label>
-                        <select class="form-control" id="raffle" (change)="calculateTotalCost()">
+                        <select class="form-control" id="raffle" (change)="calculateTotalCost();assignRaffleTickets();">
                             <option value="0">Select</option>
                             <option value="8">8 tickets</option>
                             <option value="16">16 tickets</option>
@@ -679,14 +679,39 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-row" *ngIf="name1">
+                <div class="form-row" *ngIf="name1 && name2">
                     <div class="form-group col-md-3">
                         <label for="raffle1">Tickets for {{name1}}:</label>
-                        <input type ="text" id="raffle1" class="form-control" (change)="assignRaffleTickets()">
+                        <input type ="text" id="raffle1" class="form-control" value="{{name1RaffleTickets}}" (change)="assignRaffleTickets()">
+                    </div>
+                </div>
+                <div class="form-row" *ngIf="name2">
+                    <div class="form-group col-md-3">
+                        <label for="raffle2">Tickets for {{name2}}:</label>
+                        <input type ="text" id="raffle2" class="form-control" value="{{name2RaffleTickets}}" (change)="assignRaffleTickets()">
+                    </div>
+                </div>
+                <div class="form-row" *ngIf="name3">
+                    <div class="form-group col-md-3">
+                        <label for="raffle3">Tickets for {{name3}}:</label>
+                        <input type ="text" id="raffle3" class="form-control" value="{{name3RaffleTickets}}" (change)="assignRaffleTickets()">
+                    </div>
+                </div>
+                <div class="form-row" *ngIf="name4">
+                    <div class="form-group col-md-3">
+                        <label for="raffle4">Tickets for {{name4}}:</label>
+                        <input type ="text" id="raffle4" class="form-control" value="{{name4RaffleTickets}}" (change)="assignRaffleTickets()">
                     </div>
                 </div>
                 <br />
-                Total Raffle Tickets: {{totalRaffleTickets}}
+                <div class="alert alert-info" style="width:500px;">Total Raffle Tickets: {{totalRaffleTickets}}</div>
+                <ng-container *ngIf="unAssignedRaffleTickets > 0">
+                    <div class="alert alert-warning" style="font-size:15px;width:500px;">Unassigned Raffle Tickets: {{unAssignedRaffleTickets}}</div>
+                </ng-container>
+                <ng-container *ngIf="unAssignedRaffleTickets < 0">
+                    <div class="alert alert-danger" style="font-size:15px;width:500px;">Over Assigned by {{unAssignedRaffleTickets * -1}}!  Add more or change assignments</div>
+                </ng-container>
+                
                 <hr />
             </div>
             <div style="font-size:20px;"><strong>Total Cost:</strong><span id="totalCost" style="padding-left:5px">${{totalCost}}</span></div>
