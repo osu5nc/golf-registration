@@ -37,4 +37,20 @@ describe('RegistrationComponent', () => {
       expect(component.extraLunch).toEqual(false);
     });
   });
+
+  describe('showExtraGolfers()', () => {
+    it('should set extraGolfers to true', () => {
+      component.extraGolfers = false;
+      component.showExtraGolfers();
+      expect(component.extraGolfers).toEqual(true);
+    });
+  });
+
+  describe('hideExtraGolfers()', () => {
+    it('should set extraGolfers to true', () => {
+      component.extraGolfers = true;
+      component.hideExtraGolfers();
+      expect(component.extraGolfers).toEqual(false);
+    });
+  });
 });
