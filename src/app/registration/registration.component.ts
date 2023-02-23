@@ -334,8 +334,12 @@ export class RegistrationComponent {
 
   private postRegistration() {
     let comments = '';
-    if(this.elementHasValue('comments')){
+    if (this.elementHasValue('comments')) {
       comments = this.getHTMLValue('comments');
+    }
+    let otherGolfers = '';
+    if (this.elementHasValue('otherGolfers')) {
+      otherGolfers = this.getHTMLValue('otherGolfers');
     }
     const body: any = {
       participation: this.participation,
@@ -346,6 +350,7 @@ export class RegistrationComponent {
       holeSponsor: this.holeSponsor,
       totalRaffleTickets: this.totalRaffleTickets,
       comments,
+      otherGolfers,
       primaryName: this.getHTMLValue('name1'),
       primaryEmail: this.getHTMLValue('email1'),
       primaryMailingAddress: this.getHTMLValue('address1'),
