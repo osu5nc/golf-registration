@@ -87,7 +87,7 @@ export class RegistrationComponent {
       this.totalRaffleTickets = 6;
       this.skippingGolf = false;
       this.raffleIncluded = true;
-    } else if (this.participation == 'golf') {
+    } else if (this.participation === 'golf') {
       this.totalCost = this.GOLF.singlePrice;
       this.totalLunches = 1;
       this.totalGolfers = 1;
@@ -95,7 +95,7 @@ export class RegistrationComponent {
       this.totalRaffleTickets = 3;
       this.skippingGolf = false;
       this.raffleIncluded = true;
-    } else if (this.participation == 'holeSponsor') {
+    } else if (this.participation === 'holeSponsor') {
       this.totalCost = this.GOLF.holeSponsorPrice;
       this.totalLunches = 0;
       this.totalGolfers = 0;
@@ -103,7 +103,7 @@ export class RegistrationComponent {
       this.totalRaffleTickets = 0;
       this.skippingGolf = true;
       this.raffleIncluded = false;
-    } else if (this.participation == 'lunchOnly') {
+    } else if (this.participation === 'lunchOnly') {
       this.totalCost = this.GOLF.lunchPrice;
       this.totalLunches = 1;
       this.totalGolfers = 0;

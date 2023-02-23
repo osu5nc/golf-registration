@@ -12,5 +12,12 @@
         "project": "tsconfig.json"
     },
     "rules": {
+        "@typescript-eslint/consistent-type-assertions": [2, { "assertionStyle": "angle-bracket"}],
+        "@typescript-eslint/semi" : "off",
+        "@typescript-eslint/no-confusing-void-expression": "off",
+        "space-unary-ops": "off",
+        "@typescript-eslint/strict-boolean-expressions": "off",
+        "@typescript-eslint/consistent-type-imports" : "off",
+        "@typescript-eslint/prefer-readonly": "off"
     }
 }
