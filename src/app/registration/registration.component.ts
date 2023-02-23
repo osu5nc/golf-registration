@@ -10,8 +10,7 @@ import { RegistrationService } from '../registration.service';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent {
-
-  constructor(
+  constructor (
     private registrationService: RegistrationService,
     private golfDataService: GolfDataService,
     private router: Router
@@ -66,12 +65,12 @@ export class RegistrationComponent {
   invalidDonation = false;
   saveInProgress = false;
 
-  public calculateTotalCost(): void {
-    this.participation = (<any>document.forms)['golfSignup'].elements['participation'].value;
-    if(this.participation) {
+  public calculateTotalCost (): void {
+    this.participation = (<any>document.forms).golfSignup.elements.participation.value;
+    if (this.participation) {
       this.hideElement('invalidParticipation');
     }
-    if (this.participation == 'scarlet') {
+    if (this.participation === 'scarlet') {
       this.totalCost = this.GOLF.scarletPrice;
       this.totalLunches = 4;
       this.totalGolfers = 4;
@@ -79,7 +78,7 @@ export class RegistrationComponent {
       this.totalRaffleTickets = 12;
       this.skippingGolf = false;
       this.raffleIncluded = true;
-    } else if (this.participation == 'gray') {
+    } else if (this.participation === 'gray') {
       this.totalCost = this.GOLF.grayPrice;
       this.totalLunches = 2;
       this.totalGolfers = 2;
@@ -87,7 +86,7 @@ export class RegistrationComponent {
       this.totalRaffleTickets = 6;
       this.skippingGolf = false;
       this.raffleIncluded = true;
-    } else if (this.participation == 'golf') {
+    } else if (this.participation === 'golf') {
       this.totalCost = this.GOLF.singlePrice;
       this.totalLunches = 1;
       this.totalGolfers = 1;
@@ -95,7 +94,7 @@ export class RegistrationComponent {
       this.totalRaffleTickets = 3;
       this.skippingGolf = false;
       this.raffleIncluded = true;
-    } else if (this.participation == 'holeSponsor') {
+    } else if (this.participation === 'holeSponsor') {
       this.totalCost = this.GOLF.holeSponsorPrice;
       this.totalLunches = 0;
       this.totalGolfers = 0;
@@ -103,7 +102,7 @@ export class RegistrationComponent {
       this.totalRaffleTickets = 0;
       this.skippingGolf = true;
       this.raffleIncluded = false;
-    } else if (this.participation == 'lunchOnly') {
+    } else if (this.participation === 'lunchOnly') {
       this.totalCost = this.GOLF.lunchPrice;
       this.totalLunches = 1;
       this.totalGolfers = 0;
@@ -111,8 +110,7 @@ export class RegistrationComponent {
       this.totalRaffleTickets = 0;
       this.skippingGolf = true;
       this.raffleIncluded = false;
-    }
-    else {
+    } else {
       this.totalCost = 0;
       this.totalLunches = 0;
       this.totalGolfers = 0;
@@ -124,31 +122,31 @@ export class RegistrationComponent {
       this.totalCost = this.totalGolfers * this.GOLF.singlePrice;
       this.totalRaffleTickets = this.totalGolfers * 3;
     }
-    if(this.extraLunch) {
-      if(this.elementHasValue('lunch1')) {
+    if (this.extraLunch) {
+      if (this.elementHasValue('lunch1')) {
         this.totalCost += this.GOLF.lunchPrice;
         this.totalLunches ++;
       }
-      if(this.elementHasValue('lunch2')) {
+      if (this.elementHasValue('lunch2')) {
         this.totalCost += this.GOLF.lunchPrice;
         this.totalLunches ++;
       }
-      if(this.elementHasValue('lunch3')) {
+      if (this.elementHasValue('lunch3')) {
         this.totalCost += this.GOLF.lunchPrice;
         this.totalLunches ++;
       }
-      if(this.elementHasValue('lunch4')) {
+      if (this.elementHasValue('lunch4')) {
         this.totalCost += this.GOLF.lunchPrice;
         this.totalLunches ++;
       }
     }
-    if((this.extraRaffle || this.participation === 'lunchOnly' || this.participation === 'holeSponsor') && this.elementHasValue('raffle')) {
+    if ((this.extraRaffle || this.participation === 'lunchOnly' || this.participation === 'holeSponsor') && this.elementHasValue('raffle')) {
       const raffleTickets = +this.getHTMLValue('raffle');
       const raffleCost = raffleTickets * 20 / 8;
       this.totalCost += raffleCost;
       this.totalRaffleTickets += raffleTickets;
     }
-    if(this.elementHasValue('donation')) {
+    if (this.elementHasValue('donation')) {
       this.donation = +this.getHTMLValue('donation');
       if (Number.isNaN(this.donation)) {
         this.invalidDonation = true;
@@ -158,19 +156,19 @@ export class RegistrationComponent {
     }
   }
 
-  public showExtraGolfers(): void {
+  public showExtraGolfers (): void {
     this.extraGolfers = true;
   }
 
-  public hideExtraGolfers(): void {
+  public hideExtraGolfers (): void {
     this.extraGolfers = false;
   }
 
-  public showExtraLunch(): void {
+  public showExtraLunch (): void {
     this.extraLunch = true;
   }
 
-  public hideExtraLunch() : void {
+  public hideExtraLunch (): void {
     this.extraLunch = false;
     this.clearField('lunch1');
     this.clearField('lunch2');
@@ -178,29 +176,29 @@ export class RegistrationComponent {
     this.clearField('lunch4');
   }
 
-  public showExtraRaffle(): void {
+  public showExtraRaffle (): void {
     this.extraRaffle = true;
   }
 
-  public hideExtraRaffle(): void {
+  public hideExtraRaffle (): void {
     this.extraRaffle = false;
   }
 
-  private clearField(id: string): void {
+  private clearField (id: string): void {
     if ((<HTMLInputElement>document.getElementById(id))) {
       (<HTMLInputElement>document.getElementById('lunch1')).value = '';
     }
   }
 
-  private elementHasValue(id: string): boolean {
+  private elementHasValue (id: string): boolean {
     return !!((<HTMLInputElement>document.getElementById(id)) && (<HTMLInputElement>document.getElementById(id)).value);
   }
 
-  private getHTMLValue(id: string): string {
+  private getHTMLValue (id: string): string {
     return (<HTMLInputElement>document.getElementById(id)).value;
   }
 
-  private validateForm(): boolean {
+  private validateForm (): boolean {
     const zipRegex = /^\d{5}$/;
     let formValid = true;
     if (this.participation === '') {
@@ -236,7 +234,7 @@ export class RegistrationComponent {
       }
     }
     if (this.elementHasValue('name2')) {
-      if(this.getHTMLValue('address2') === '') {
+      if (this.getHTMLValue('address2') === '') {
         formValid = false;
         this.invalidAddress2 = true;
       }
@@ -264,7 +262,7 @@ export class RegistrationComponent {
       formValid = false;
     }
     if (this.elementHasValue('name3')) {
-      if(this.getHTMLValue('address3') === '') {
+      if (this.getHTMLValue('address3') === '') {
         formValid = false;
         this.invalidAddress3 = true;
       }
@@ -292,7 +290,7 @@ export class RegistrationComponent {
       formValid = false;
     }
     if (this.elementHasValue('name4')) {
-      if(this.getHTMLValue('address4') === '') {
+      if (this.getHTMLValue('address4') === '') {
         formValid = false;
         this.invalidAddress4 = true;
       }
@@ -322,18 +320,18 @@ export class RegistrationComponent {
     return formValid;
   }
 
-  public submitRegistration(): void {
+  public submitRegistration (): void {
     this.saveInProgress = true;
-    if(this.validateForm()) {
+    if (this.validateForm()) {
       this.postRegistration();
     } else {
       this.saveInProgress = false;
       this.showElement('invalidForm');
-      window.scrollTo(0,0);
+      window.scrollTo(0, 0);
     }
   }
 
-  private postRegistration() {
+  private postRegistration (): void {
     let comments = '';
     if (this.elementHasValue('comments')) {
       comments = this.getHTMLValue('comments');
@@ -359,7 +357,7 @@ export class RegistrationComponent {
       primaryState: this.getHTMLValue('state1'),
       primaryZip: this.getHTMLValue('zip1'),
       primaryPhone: this.getHTMLValue('phone1')
-      
+
     };
     this.setGolfer('2', body);
     this.setGolfer('3', body);
@@ -376,8 +374,8 @@ export class RegistrationComponent {
     });
   }
 
-  private setGolfer(id: string, body: any): void {
-    if(this.elementHasValue(`name${id}`)){
+  private setGolfer (id: string, body: any): void {
+    if (this.elementHasValue(`name${id}`)) {
       body[`golfer${id}Name`] = this.getHTMLValue(`name${id}`);
       body[`golfer${id}Email`] = this.getHTMLValue(`email${id}`);
       body[`golfer${id}MailingAddress`] = this.getHTMLValue(`address${id}`);
@@ -388,17 +386,17 @@ export class RegistrationComponent {
     }
   }
 
-  private setLunch(id: string, body: any): void {
-    if(this.elementHasValue(`lunch${id}`)){
+  private setLunch (id: string, body: any): void {
+    if (this.elementHasValue(`lunch${id}`)) {
       body[`lunch${id}Name`] = this.getHTMLValue(`lunch${id}`);
     }
   }
 
-  private showElement(id: string): void {
+  private showElement (id: string): void {
     (<HTMLElement>document.getElementById(id)).style.display = 'block';
   }
 
-  private hideElement(id: string): void {
+  private hideElement (id: string): void {
     (<HTMLElement>document.getElementById(id)).style.display = 'none';
   }
 }

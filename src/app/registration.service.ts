@@ -6,10 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RegistrationService {
+  constructor (private httpClient: HttpClient) { }
 
-  constructor(private httpClient: HttpClient) { }
-
-  register(body: any): Observable<any> {
+  register (body: any): Observable<any> {
     const url = 'https://gb8fbwclgf.execute-api.us-east-1.amazonaws.com/dev/register';
     return this.httpClient.post(url, body);
   }

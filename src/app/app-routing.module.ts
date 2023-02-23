@@ -5,14 +5,14 @@ import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Routes = [
   {
-		path: 'registration',
-		component: RegistrationComponent
-	},
+    path: 'registration',
+    component: RegistrationComponent
+  },
   {
-		path: 'payment',
-		component: PaymentComponent
-	},
-  { 
+    path: 'payment',
+    component: PaymentComponent
+  },
+  {
     path: '**',
     component: RegistrationComponent
   }

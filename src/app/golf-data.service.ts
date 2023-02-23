@@ -4,9 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class GolfDataService {
-
-  constructor() { }
-
   confirmationNumber: string = '';
 
   amountDue: number = 0;

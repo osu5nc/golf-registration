@@ -10,7 +10,7 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent
-      ],
+      ]
     }).compileComponents();
   });
 
@@ -20,7 +20,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'underboys-ui'`, () => {
+  it('should have as title \'underboys-ui\'', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('underboys-ui');
@@ -29,7 +29,7 @@ describe('AppComponent', () => {
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
+    const compiled = <HTMLElement> fixture.nativeElement;
     expect(compiled.querySelector('.content span')?.textContent).toContain('underboys-ui app is running!');
   });
 });
