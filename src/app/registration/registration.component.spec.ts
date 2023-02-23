@@ -12,7 +12,7 @@ describe('RegistrationComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [RegistrationComponent],
       providers: [
-        { provide: RegistrationService, useValue: mockService}
+        { provide: RegistrationService, useValue: mockService }
       ]
     })
       .compileComponents();
@@ -22,7 +22,19 @@ describe('RegistrationComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('showExtraLunch()', () => {
+    it('should set extraLunch to true', () => {
+      component.extraLunch = false;
+      component.showExtraLunch();
+      expect(component.extraLunch).toEqual(true);
+    });
+  });
+
+  describe('hideExtraLunch()', () => {
+    it('should set extraLunch to true', () => {
+      component.extraLunch = true;
+      component.hideExtraLunch();
+      expect(component.extraLunch).toEqual(false);
+    });
   });
 });
