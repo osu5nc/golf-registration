@@ -22,6 +22,7 @@ export class RegistrationComponent {
   totalGolfers: number = 0;
   holeSponsor: boolean = false;
   totalRaffleTickets: number = 0;
+  extraGolfers: boolean = false;
   extraLunch: boolean = false;
   extraRaffle: boolean = false;
   skippingGolf: boolean = false;
@@ -118,6 +119,10 @@ export class RegistrationComponent {
       this.holeSponsor = false;
       this.totalRaffleTickets = 0;
     }
+    if(this.extraGolfers) {
+      this.totalGolfers += +this.getHTMLValue('additionalGolfers');
+      this.totalCost = this.totalGolfers * this.GOLF.singlePrice;
+    }
     if(this.extraLunch) {
       if(this.elementHasValue('lunch1')) {
         this.totalCost += this.GOLF.lunchPrice;
@@ -150,6 +155,14 @@ export class RegistrationComponent {
         this.totalCost += this.donation;
       }
     }
+  }
+
+  public showExtraGolfers(): void {
+    this.extraGolfers = true;
+  }
+
+  public hideExtraGolfers(): void {
+    this.extraGolfers = true;
   }
 
   public showExtraLunch(): void {
