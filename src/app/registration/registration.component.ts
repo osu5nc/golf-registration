@@ -86,7 +86,7 @@ export class RegistrationComponent {
       this.totalRaffleTickets = 6;
       this.skippingGolf = false;
       this.raffleIncluded = true;
-    } else if (this.participation == 'single') {
+    } else if (this.participation == 'golf') {
       this.totalCost = this.GOLF.singlePrice;
       this.totalLunches = 1;
       this.totalGolfers = 1;
