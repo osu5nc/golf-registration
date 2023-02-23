@@ -723,6 +723,14 @@
                     </div>
                 </div>
             </div>
+            <ng-container *ngIf="totalGolfers < 4 && participation !== 'lunchOnly' && participation !== 'holeSponsor' && participation !== ''">
+                <hr />
+                <div>
+                    <label for="otherGolfers">Are there other golfers that you'd like to be grouped with?</label>
+                    <br />
+                    <textarea rows="2" cols="60" id="otherGolfers"></textarea>
+                </div>
+            </ng-container>
             <hr />
             <div><label for="comments">Any Additional Comments?</label><br /><textarea rows="5" cols="90" id="comments"></textarea></div>
         </form>

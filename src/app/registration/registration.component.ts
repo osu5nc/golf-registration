@@ -119,7 +119,7 @@ export class RegistrationComponent {
       this.holeSponsor = false;
       this.totalRaffleTickets = 0;
     }
-    if(this.extraGolfers) {
+    if (this.extraGolfers && this.elementHasValue('additionalGolfers')) {
       this.totalGolfers += +this.getHTMLValue('additionalGolfers');
       this.totalCost = this.totalGolfers * this.GOLF.singlePrice;
     }
@@ -162,7 +162,7 @@ export class RegistrationComponent {
   }
 
   public hideExtraGolfers(): void {
-    this.extraGolfers = true;
+    this.extraGolfers = false;
   }
 
   public showExtraLunch(): void {
