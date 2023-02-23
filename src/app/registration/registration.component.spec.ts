@@ -23,18 +23,33 @@ describe('RegistrationComponent', () => {
   });
 
   describe('showExtraLunch()', () => {
-    it('should set extraLunch to true', () => {
+    it('should set extraLunch to true and show lunch fields', () => {
       component.extraLunch = false;
       component.showExtraLunch();
+      fixture.detectChanges();
       expect(component.extraLunch).toEqual(true);
+      expect(document.getElementById('lunch1')).toBeTruthy();
+      expect(document.getElementById('lunch2')).toBeTruthy();
+      expect(document.getElementById('lunch3')).toBeTruthy();
+      expect(document.getElementById('lunch4')).toBeTruthy();
     });
   });
 
   describe('hideExtraLunch()', () => {
-    it('should set extraLunch to true', () => {
-      component.extraLunch = true;
+    it('should set extraLunch to true and clear lunch fields', () => {
+      component.showExtraLunch();
+      fixture.detectChanges();
+      (<HTMLInputElement>document.getElementById('lunch1')).value = 'Helly R';
+      (<HTMLInputElement>document.getElementById('lunch2')).value = 'Mark S';
+      (<HTMLInputElement>document.getElementById('lunch3')).value = 'Dylan';
+      (<HTMLInputElement>document.getElementById('lunch4')).value = 'Irving';
       component.hideExtraLunch();
+      fixture.detectChanges();
       expect(component.extraLunch).toEqual(false);
+      expect(document.getElementById('lunch1')).toBeNull();
+      expect(document.getElementById('lunch2')).toBeNull();
+      expect(document.getElementById('lunch3')).toBeNull();
+      expect(document.getElementById('lunch4')).toBeNull();
     });
   });
 
