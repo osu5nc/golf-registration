@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RegistrationService } from '../registration.service';
 
 import { RegistrationComponent } from './registration.component';
+import { constants } from '../constants/constants';
 
 describe('RegistrationComponent', () => {
   let component: RegistrationComponent;
@@ -91,5 +92,79 @@ describe('RegistrationComponent', () => {
       expect(document.getElementById('raffleTickets')).toBeNull();
       expect(component.extraRaffle).toEqual(false);
     });
+  });
+
+  describe('calculateTotalCost()', () => {
+    describe('initial participation calculation', () => {
+      it('sets initial values for scarlet', () => {
+        const participation = <HTMLInputElement>document.getElementById('scarlet');
+        participation.click();
+        component.calculateTotalCost();
+        fixture.detectChanges();
+        expect(component.totalCost).toEqual(constants.scarletPrice);
+        expect(component.totalLunches).toEqual(4);
+        expect(component.totalGolfers).toEqual(4);
+        expect(component.holeSponsor).toBe(true);
+        expect(component.totalRaffleTickets).toEqual(12);
+        expect(component.skippingGolf).toBe(false);
+        expect(component.raffleIncluded).toBe(true);
+      });
+
+      it('sets initial values for gray', () => {
+        const participation = <HTMLInputElement>document.getElementById('gray');
+        participation.click();
+        component.calculateTotalCost();
+        fixture.detectChanges();
+        expect(component.totalCost).toEqual(constants.grayPrice);
+        expect(component.totalLunches).toEqual(2);
+        expect(component.totalGolfers).toEqual(2);
+        expect(component.holeSponsor).toBe(true);
+        expect(component.totalRaffleTickets).toEqual(6);
+        expect(component.skippingGolf).toBe(false);
+        expect(component.raffleIncluded).toBe(true);
+      });
+
+      it('sets initial values for holeSponsor', () => {
+        const participation = <HTMLInputElement>document.getElementById('holeSponsor');
+        participation.click();
+        component.calculateTotalCost();
+        fixture.detectChanges();
+        expect(component.totalCost).toEqual(constants.holeSponsorPrice);
+        expect(component.totalLunches).toEqual(0);
+        expect(component.totalGolfers).toEqual(0);
+        expect(component.holeSponsor).toBe(true);
+        expect(component.totalRaffleTickets).toEqual(0);
+        expect(component.skippingGolf).toBe(true);
+        expect(component.raffleIncluded).toBe(false);
+      });
+
+      it('sets initial values for golf', () => {
+        const participation = <HTMLInputElement>document.getElementById('golf');
+        participation.click();
+        component.calculateTotalCost();
+        fixture.detectChanges();
+        expect(component.totalCost).toEqual(constants.singlePrice);
+        expect(component.totalLunches).toEqual(1);
+        expect(component.totalGolfers).toEqual(1);
+        expect(component.holeSponsor).toBe(false);
+        expect(component.totalRaffleTickets).toEqual(3);
+        expect(component.skippingGolf).toBe(false);
+        expect(component.raffleIncluded).toBe(true);
+      });
+
+      it('sets initial values for lunchOnly', () => {
+        const participation = <HTMLInputElement>document.getElementById('lunchOnly');
+        participation.click();
+        component.calculateTotalCost();
+        fixture.detectChanges();
+        expect(component.totalCost).toEqual(constants.lunchPrice);
+        expect(component.totalLunches).toEqual(1);
+        expect(component.totalGolfers).toEqual(0);
+        expect(component.holeSponsor).toBe(false);
+        expect(component.totalRaffleTickets).toEqual(0);
+        expect(component.skippingGolf).toBe(true);
+        expect(component.raffleIncluded).toBe(false);
+      });
+    })
   });
 });
