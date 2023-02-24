@@ -54,18 +54,42 @@ describe('RegistrationComponent', () => {
   });
 
   describe('showExtraGolfers()', () => {
-    it('should set extraGolfers to true', () => {
+    it('should set extraGolfers to true and show additional golfer section', () => {
       component.extraGolfers = false;
       component.showExtraGolfers();
+      fixture.detectChanges();
+      expect(document.getElementById('additionalGolferSection')).toBeTruthy();
       expect(component.extraGolfers).toEqual(true);
     });
   });
 
   describe('hideExtraGolfers()', () => {
-    it('should set extraGolfers to true', () => {
+    it('should set extraGolfers to true and hide additional golfer section', () => {
       component.extraGolfers = true;
       component.hideExtraGolfers();
+      fixture.detectChanges();
+      expect(document.getElementById('additionalGolferSection')).toBeNull();
       expect(component.extraGolfers).toEqual(false);
+    });
+  });
+
+  describe('showExtraRaffle()', () => {
+    it('should set extraRaffle to true and show raffle section', () => {
+      component.extraRaffle = false;
+      component.showExtraRaffle();
+      fixture.detectChanges();
+      expect(document.getElementById('raffleTickets')).toBeTruthy();
+      expect(component.extraRaffle).toEqual(true);
+    });
+  });
+
+  describe('hideExtraRaffle()', () => {
+    it('should set extraRaffle to true', () => {
+      component.extraRaffle = true;
+      component.hideExtraRaffle();
+      fixture.detectChanges();
+      expect(document.getElementById('raffleTickets')).toBeNull();
+      expect(component.extraRaffle).toEqual(false);
     });
   });
 });

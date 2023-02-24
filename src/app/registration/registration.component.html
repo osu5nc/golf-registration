@@ -273,7 +273,7 @@
                     </div>
                 </fieldset>
             </div>
-            <div *ngIf="extraGolfers">
+            <div *ngIf="extraGolfers" id="additionalGolferSection">
                 <div class="row">
                     <div class="form-group col-md-3">
                         <label for="additionalGolfers">How many additional golfers?</label>
@@ -684,7 +684,7 @@
                 </fieldset>
                 <hr />
             </div>
-            <div *ngIf="extraRaffle || skippingGolf">
+            <div *ngIf="extraRaffle || skippingGolf" id="raffleTickets">
                 <strong>Raffle Tickets</strong><br /><br />
                 <div class="row">
                     <div class="form-group col-md-2">
