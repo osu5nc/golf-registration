@@ -70,6 +70,47 @@ export class RegistrationComponent {
     if (this.participation) {
       this.hideElement('invalidParticipation');
     }
+    this.initializeByParticipation();
+    if (this.extraGolfers && this.elementHasValue('additionalGolfers')) {
+      this.totalGolfers += +this.getHTMLValue('additionalGolfers');
+      this.totalCost = this.totalGolfers * this.GOLF.singlePrice;
+      this.totalRaffleTickets = this.totalGolfers * 3;
+    }
+    if (this.extraLunch) {
+      if (this.elementHasValue('lunch1')) {
+        this.totalCost += this.GOLF.lunchPrice;
+        this.totalLunches ++;
+      }
+      if (this.elementHasValue('lunch2')) {
+        this.totalCost += this.GOLF.lunchPrice;
+        this.totalLunches ++;
+      }
+      if (this.elementHasValue('lunch3')) {
+        this.totalCost += this.GOLF.lunchPrice;
+        this.totalLunches ++;
+      }
+      if (this.elementHasValue('lunch4')) {
+        this.totalCost += this.GOLF.lunchPrice;
+        this.totalLunches ++;
+      }
+    }
+    if ((this.extraRaffle || this.participation === 'lunchOnly' || this.participation === 'holeSponsor') && this.elementHasValue('raffle')) {
+      const raffleTickets = +this.getHTMLValue('raffle');
+      const raffleCost = raffleTickets * 20 / 8;
+      this.totalCost += raffleCost;
+      this.totalRaffleTickets += raffleTickets;
+    }
+    if (this.elementHasValue('donation')) {
+      this.donation = +this.getHTMLValue('donation');
+      if (Number.isNaN(this.donation)) {
+        this.invalidDonation = true;
+      } else {
+        this.totalCost += this.donation;
+      }
+    }
+  }
+
+  private initializeByParticipation (): void {
     if (this.participation === 'scarlet') {
       this.totalCost = this.GOLF.scarletPrice;
       this.totalLunches = 4;
@@ -116,43 +157,6 @@ export class RegistrationComponent {
       this.totalGolfers = 0;
       this.holeSponsor = false;
       this.totalRaffleTickets = 0;
-    }
-    if (this.extraGolfers && this.elementHasValue('additionalGolfers')) {
-      this.totalGolfers += +this.getHTMLValue('additionalGolfers');
-      this.totalCost = this.totalGolfers * this.GOLF.singlePrice;
-      this.totalRaffleTickets = this.totalGolfers * 3;
-    }
-    if (this.extraLunch) {
-      if (this.elementHasValue('lunch1')) {
-        this.totalCost += this.GOLF.lunchPrice;
-        this.totalLunches ++;
-      }
-      if (this.elementHasValue('lunch2')) {
-        this.totalCost += this.GOLF.lunchPrice;
-        this.totalLunches ++;
-      }
-      if (this.elementHasValue('lunch3')) {
-        this.totalCost += this.GOLF.lunchPrice;
-        this.totalLunches ++;
-      }
-      if (this.elementHasValue('lunch4')) {
-        this.totalCost += this.GOLF.lunchPrice;
-        this.totalLunches ++;
-      }
-    }
-    if ((this.extraRaffle || this.participation === 'lunchOnly' || this.participation === 'holeSponsor') && this.elementHasValue('raffle')) {
-      const raffleTickets = +this.getHTMLValue('raffle');
-      const raffleCost = raffleTickets * 20 / 8;
-      this.totalCost += raffleCost;
-      this.totalRaffleTickets += raffleTickets;
-    }
-    if (this.elementHasValue('donation')) {
-      this.donation = +this.getHTMLValue('donation');
-      if (Number.isNaN(this.donation)) {
-        this.invalidDonation = true;
-      } else {
-        this.totalCost += this.donation;
-      }
     }
   }
 
