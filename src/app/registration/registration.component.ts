@@ -237,7 +237,7 @@ export class RegistrationComponent {
         this.invalidPhone = true;
       }
     }
-    if (this.elementHasValue('name2')) {
+    /* if (this.elementHasValue('name2')) {
       if (this.getHTMLValue('address2') === '') {
         formValid = false;
         this.invalidAddress2 = true;
@@ -261,11 +261,11 @@ export class RegistrationComponent {
         formValid = false;
         this.invalidPhone2 = true;
       }
-    } else if (this.elementHasValue('address2')) {
+    } else */ if (this.elementHasValue('address2')) {
       this.invalidName2 = true;
       formValid = false;
     }
-    if (this.elementHasValue('name3')) {
+    /* if (this.elementHasValue('name3')) {
       if (this.getHTMLValue('address3') === '') {
         formValid = false;
         this.invalidAddress3 = true;
@@ -289,11 +289,11 @@ export class RegistrationComponent {
         formValid = false;
         this.invalidPhone3 = true;
       }
-    } else if (this.elementHasValue('address3')) {
+    } else */ if (this.elementHasValue('address3')) {
       this.invalidName3 = true;
       formValid = false;
     }
-    if (this.elementHasValue('name4')) {
+    /* if (this.elementHasValue('name4')) {
       if (this.getHTMLValue('address4') === '') {
         formValid = false;
         this.invalidAddress4 = true;
@@ -317,7 +317,7 @@ export class RegistrationComponent {
         formValid = false;
         this.invalidPhone4 = true;
       }
-    } else if (this.elementHasValue('address4')) {
+    } else */ if (this.elementHasValue('address4')) {
       this.invalidName4 = true;
       formValid = false;
     }
