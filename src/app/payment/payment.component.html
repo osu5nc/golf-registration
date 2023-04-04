@@ -1,7 +1,7 @@
 <div class="container">
-    <div class="form-check">Congratulations, you have registered for the golf tournament!</div><br />
-    <div class="form-check"><strong>Confirmation Number:</strong> {{golfDataService.confirmationNumber}}</div><br />
-    <div class="form-check"><strong>Amount Due:</strong> ${{golfDataService.amountDue}}</div><br />
+    <div class="form-check" *ngIf="golfDataService.confirmationNumber">Congratulations, you have registered for the golf tournament!</div><br />
+    <div class="form-check" *ngIf="golfDataService.confirmationNumber"><strong>Confirmation Number:</strong> {{golfDataService.confirmationNumber}}</div><br />
+    <div class="form-check" *ngIf="golfDataService.amountDue"><strong>Amount Due:</strong> ${{golfDataService.amountDue}}</div><br />
     <div class="form-check">To complete your registration, choose from these payment options:</div>
     <br />
     <div class="form-check">
