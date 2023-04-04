@@ -75,6 +75,7 @@ export class RegistrationComponent {
       this.totalGolfers += +this.getHTMLValue('additionalGolfers');
       this.totalCost = this.totalGolfers * this.GOLF.singlePrice;
       this.totalRaffleTickets = this.totalGolfers * 3;
+      this.totalLunches += +this.getHTMLValue('additionalGolfers');
     }
     if (this.extraLunch) {
       if (this.elementHasValue('lunch1')) {
